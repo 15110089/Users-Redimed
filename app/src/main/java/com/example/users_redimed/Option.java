@@ -7,22 +7,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class Option extends AppCompatActivity {
 
-    Button btWelcome;
+    Button btRequestAdvice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_option);
 
         //ánh xạ
-        btWelcome = (Button) findViewById(R.id.btWelcomeId);
+        btRequestAdvice = (Button) findViewById(R.id.btRequestAdviceId);
 
         //code
-        btWelcome.setOnClickListener(new View.OnClickListener() {
+        btRequestAdvice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it  =new Intent(MainActivity.this,Login.class);
+                Intent it  =new Intent(Option.this,RequestAdvice.class);
                 startActivity(it);
             }
         });
