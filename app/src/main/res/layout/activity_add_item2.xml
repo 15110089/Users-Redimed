@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RequestAdvice">
+    tools:context=".AddItem2">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,14 +16,14 @@
             android:layout_height="wrap_content"
             android:textSize="200px"
             android:textColor="#2196F3"
-            android:text="Request Advice 1" />
-
+            android:text="AddItem2 - trả lời câu hỏi" />
         <Button
-            android:id="@+id/btAddItemId"
+            android:id="@+id/btFinishId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Item" />
-    </LinearLayout>
+            android:text="Finish" />
 
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

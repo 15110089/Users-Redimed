@@ -7,22 +7,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class RequestAdvice extends AppCompatActivity {
+public class AddItem1 extends AppCompatActivity {
 
-    Button btAddItem;
+    Button btAddItem2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_request_advice);
+        setContentView(R.layout.activity_add_item1);
         //ánh xạ
-        btAddItem = (Button) findViewById(R.id.btAddItemId);
+        btAddItem2 = (Button) findViewById(R.id.btAddItem2Id);
 
         //code
-        btAddItem.setOnClickListener(new View.OnClickListener() {
+        btAddItem2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it  =new Intent(RequestAdvice.this,AddItem.class);
+                Intent it  =new Intent(AddItem1.this,AddItem2.class);
                 startActivity(it);
             }
         });
