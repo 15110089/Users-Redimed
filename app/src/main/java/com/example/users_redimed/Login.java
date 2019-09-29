@@ -1,11 +1,15 @@
 package com.example.users_redimed;
 
-import androidx.appcompat.app.AppCompatActivity;
+        import androidx.appcompat.app.AppCompatActivity;
+        import androidx.lifecycle.ViewModelProviders;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+        import android.content.Intent;
+        import android.os.Bundle;
+        import android.util.Log;
+        import android.view.View;
+        import android.widget.Button;
+
+        import java.io.File;
 
 public class Login extends AppCompatActivity {
 
@@ -26,5 +30,10 @@ public class Login extends AppCompatActivity {
                 startActivity(it);
             }
         });
+        //log root
+        rootData model = ViewModelProviders.of(this).get(rootData.class);
+
+
+        Log.i(">N", model.getUsers());
     }
 }
