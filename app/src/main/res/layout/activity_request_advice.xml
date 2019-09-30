@@ -1,29 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RequestAdvice">
-    <LinearLayout
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp"
+    android:background="#FF8C00">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You are not item"
+        android:textStyle="bold"
+        android:textSize="60px"
+        android:textColor="#E4DBDB"/>
+
+
+
+
+
+    <Button
+        android:id="@+id/btAddItemId"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="200px"
-            android:textColor="#2196F3"
-            android:text="Request Advice 1" />
-
-        <Button
-            android:id="@+id/btAddItemId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Item" />
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:text="Add Item"
+        android:shadowColor="@android:color/transparent"
+        android:padding="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="0dp"
+        android:textSize="50px"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/shapelogin"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+</LinearLayout>
