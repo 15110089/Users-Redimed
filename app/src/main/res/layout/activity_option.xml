@@ -12,26 +12,24 @@
         android:layout_height="wrap_content"
         android:visibility="visible">
 <TableRow>
-        <Button
-            android:id="@+id/btRequestAdviceId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:height="400px"
-            android:width="400px"
-            android:textSize="50px"
-            android:background="@drawable/shapelogin"
-            android:padding="15dp"
-            android:shadowColor="@android:color/transparent"
-            android:text="Request Advice"
-            android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/btRequestAdviceId"
+        android:layout_width="94dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:width="400px"
+        android:height="400px"
+        android:background="@drawable/shapesignup"
+        android:padding="15dp"
+        android:shadowColor="@android:color/transparent"
+        android:text="Request Advice"
+        android:textColor="#FFFFFF"
+        android:textSize="50px" />
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="0dp"
             android:layout_marginRight="10dp"
@@ -39,7 +37,7 @@
             android:height="400px"
             android:width="400px"
             android:textSize="50px"
-            android:background="@drawable/shapelogin"
+            android:background="@drawable/shapesignup"
             android:padding="15dp"
             android:shadowColor="@android:color/transparent"
             android:text="Track My Request"
@@ -47,8 +45,6 @@
 </TableRow>
         <TableRow>
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="10dp"
@@ -56,15 +52,13 @@
                 android:height="400px"
                 android:width="400px"
                 android:textSize="50px"
-                android:background="@drawable/shapelogin"
+                android:background="@drawable/shapesignup"
                 android:padding="15dp"
                 android:shadowColor="@android:color/transparent"
                 android:text="Profile"
                 android:textColor="#FFFFFF" />
 
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="10dp"
@@ -72,7 +66,7 @@
                 android:height="400px"
                 android:width="400px"
                 android:textSize="50px"
-                android:background="@drawable/shapelogin"
+                android:background="@drawable/shapesignup"
                 android:padding="15dp"
                 android:shadowColor="@android:color/transparent"
                 android:text="About Us"

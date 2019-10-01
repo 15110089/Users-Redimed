@@ -10,10 +10,16 @@ import android.widget.Button;
 public class Option extends AppCompatActivity {
 
     Button btRequestAdvice;
+    int countItem;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_option);
+        Bundle bd = getIntent().getExtras();
+        if(bd!=null)
+        {
+            countItem = bd.getInt("CI");
+        }
 
         //ánh xạ
         btRequestAdvice = (Button) findViewById(R.id.btRequestAdviceId);
@@ -23,6 +29,7 @@ public class Option extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent it  =new Intent(Option.this,RequestAdvice.class);
+                it.putExtra("CI",countItem);
                 startActivity(it);
             }
         });

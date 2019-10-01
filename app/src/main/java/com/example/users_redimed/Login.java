@@ -14,6 +14,7 @@ package com.example.users_redimed;
 public class Login extends AppCompatActivity {
 
     Button btLogin;
+    int countItem = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,13 +28,12 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent it  =new Intent(Login.this,Option.class);
+                it.putExtra("CI",countItem);
                 startActivity(it);
             }
         });
         //log root
         rootData model = ViewModelProviders.of(this).get(rootData.class);
-
-
         Log.i(">N", model.getUsers());
     }
 }

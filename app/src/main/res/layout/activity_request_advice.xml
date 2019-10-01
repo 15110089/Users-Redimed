@@ -1,13 +1,308 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
     android:padding="20dp"
     android:background="#FF8C00">
 
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+        <TableRow>
+
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/crItem1Id"
+                android:layout_width="400px"
+                android:layout_height="400px"
+                android:shadowColor="@android:color/transparent"
+                android:padding="15dp"
+                android:visibility="invisible"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="0dp"
+                app:cardCornerRadius="10dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_marginTop="10px"
+                        android:layout_marginLeft="10px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Complete"
+                        android:textStyle="bold"
+                        android:textSize="30px"
+                        android:textColor="#4CAF50"/>
+                    <TextView
+                        android:layout_marginTop="50px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10px"
+                        android:text="Left Item"
+                        android:textStyle="bold"
+                        android:textSize="50px"
+                        android:textColor="#FF5722"/>
+                    <TextView
+                        android:layout_marginTop="20px"
+                        android:layout_marginLeft="10px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="26/06/2018"
+                        android:textStyle="bold"
+                        android:textSize="30px"
+                        android:textColor="#928484"/>
+                    <LinearLayout
+                        android:layout_marginTop="60px"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginRight="10dp"
+                            android:buttonTint="#FF5722"
+                            android:checked="true"
+                            android:text=""
+                            android:textColor="@color/white" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="190px"
+                            android:layout_height="wrap_content"
+                            android:text="More"
+                            android:textStyle="bold"
+                            android:textSize="30px"
+                            android:textColor="#807D7D"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/crItem2Id"
+                android:layout_width="400px"
+                android:layout_height="400px"
+                android:shadowColor="@android:color/transparent"
+                android:padding="15dp"
+                android:visibility="invisible"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="0dp"
+                app:cardCornerRadius="10dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_marginTop="10px"
+                        android:layout_marginLeft="10px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Complete"
+                        android:textStyle="bold"
+                        android:textSize="30px"
+                        android:textColor="#4CAF50"/>
+                    <TextView
+                        android:layout_marginTop="50px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10px"
+                        android:text="Left Item"
+                        android:textStyle="bold"
+                        android:textSize="50px"
+                        android:textColor="#FF5722"/>
+                    <TextView
+                        android:layout_marginTop="20px"
+                        android:layout_marginLeft="10px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="26/06/2018"
+                        android:textStyle="bold"
+                        android:textSize="30px"
+                        android:textColor="#928484"/>
+                    <LinearLayout
+                        android:layout_marginTop="60px"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginRight="10dp"
+                            android:buttonTint="#FF5722"
+                            android:checked="true"
+                            android:text=""
+                            android:textColor="@color/white" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="190px"
+                            android:layout_height="wrap_content"
+                            android:text="More"
+                            android:textStyle="bold"
+                            android:textSize="30px"
+                            android:textColor="#807D7D"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </TableRow>
+        <TableRow>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/crItem3Id"
+                android:layout_width="400px"
+                android:layout_height="400px"
+                android:shadowColor="@android:color/transparent"
+                android:padding="15dp"
+                android:visibility="invisible"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="0dp"
+                app:cardCornerRadius="10dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_marginTop="10px"
+                        android:layout_marginLeft="10px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Complete"
+                        android:textStyle="bold"
+                        android:textSize="30px"
+                        android:textColor="#4CAF50"/>
+                    <TextView
+                        android:layout_marginTop="50px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10px"
+                        android:text="Left Item"
+                        android:textStyle="bold"
+                        android:textSize="50px"
+                        android:textColor="#FF5722"/>
+                    <TextView
+                        android:layout_marginTop="20px"
+                        android:layout_marginLeft="10px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="26/06/2018"
+                        android:textStyle="bold"
+                        android:textSize="30px"
+                        android:textColor="#928484"/>
+                    <LinearLayout
+                        android:layout_marginTop="60px"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginRight="10dp"
+                            android:buttonTint="#FF5722"
+                            android:checked="true"
+                            android:text=""
+                            android:textColor="@color/white" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="190px"
+                            android:layout_height="wrap_content"
+                            android:text="More"
+                            android:textStyle="bold"
+                            android:textSize="30px"
+                            android:textColor="#807D7D"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/crItem4Id"
+                android:layout_width="400px"
+                android:layout_height="400px"
+                android:shadowColor="@android:color/transparent"
+                android:padding="15dp"
+                android:visibility="invisible"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="0dp"
+                app:cardCornerRadius="10dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_marginTop="10px"
+                        android:layout_marginLeft="10px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Complete"
+                        android:textStyle="bold"
+                        android:textSize="30px"
+                        android:textColor="#4CAF50"/>
+                    <TextView
+                        android:layout_marginTop="50px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10px"
+                        android:text="Left Item"
+                        android:textStyle="bold"
+                        android:textSize="50px"
+                        android:textColor="#FF5722"/>
+                    <TextView
+                        android:layout_marginTop="20px"
+                        android:layout_marginLeft="10px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="26/06/2018"
+                        android:textStyle="bold"
+                        android:textSize="30px"
+                        android:textColor="#928484"/>
+                    <LinearLayout
+                        android:layout_marginTop="60px"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginRight="10dp"
+                            android:buttonTint="#FF5722"
+                            android:checked="true"
+                            android:text=""
+                            android:textColor="@color/white" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="190px"
+                            android:layout_height="wrap_content"
+                            android:text="More"
+                            android:textStyle="bold"
+                            android:textSize="30px"
+                            android:textColor="#807D7D"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </TableRow>
+
+    </TableLayout>
     <TextView
+        android:id="@+id/txtNotItemId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="You are not item"
@@ -33,7 +328,6 @@
         android:textSize="50px"
         android:textColor="#FFFFFF"
         android:background="@drawable/shapelogin"/>
-
 
 
 
