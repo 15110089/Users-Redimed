@@ -19,8 +19,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/crItem1Id"
-                android:layout_width="400px"
-                android:layout_height="400px"
+                android:layout_width="250px"
+                android:layout_height="250px"
                 android:shadowColor="@android:color/transparent"
                 android:padding="15dp"
                 android:visibility="invisible"
@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <TextView
-                        android:layout_marginTop="10px"
+                        android:layout_marginTop="5px"
                         android:layout_marginLeft="10px"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -44,25 +44,25 @@
                         android:textSize="30px"
                         android:textColor="#4CAF50"/>
                     <TextView
-                        android:layout_marginTop="50px"
+                        android:layout_marginTop="35px"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10px"
                         android:text="Left Item"
                         android:textStyle="bold"
-                        android:textSize="50px"
+                        android:textSize="30px"
                         android:textColor="#FF5722"/>
                     <TextView
-                        android:layout_marginTop="20px"
+                        android:layout_marginTop="10px"
                         android:layout_marginLeft="10px"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="26/06/2018"
                         android:textStyle="bold"
-                        android:textSize="30px"
+                        android:textSize="20px"
                         android:textColor="#928484"/>
                     <LinearLayout
-                        android:layout_marginTop="60px"
+                        android:layout_marginTop="30px"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -70,18 +70,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="0dp"
-                            android:layout_marginRight="10dp"
+                            android:layout_marginRight="5dp"
                             android:buttonTint="#FF5722"
                             android:checked="true"
                             android:text=""
                             android:textColor="@color/white" />
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_marginLeft="190px"
+                            android:layout_marginLeft="75px"
                             android:layout_height="wrap_content"
                             android:text="More"
                             android:textStyle="bold"
-                            android:textSize="30px"
+                            android:textSize="25px"
                             android:textColor="#807D7D"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -90,8 +90,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/crItem2Id"
-                android:layout_width="400px"
-                android:layout_height="400px"
+                android:layout_width="250px"
+                android:layout_height="250px"
                 android:shadowColor="@android:color/transparent"
                 android:padding="15dp"
                 android:visibility="invisible"
@@ -106,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <TextView
-                        android:layout_marginTop="10px"
+                        android:layout_marginTop="5px"
                         android:layout_marginLeft="10px"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -115,25 +115,25 @@
                         android:textSize="30px"
                         android:textColor="#4CAF50"/>
                     <TextView
-                        android:layout_marginTop="50px"
+                        android:layout_marginTop="35px"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10px"
                         android:text="Left Item"
                         android:textStyle="bold"
-                        android:textSize="50px"
+                        android:textSize="30px"
                         android:textColor="#FF5722"/>
                     <TextView
-                        android:layout_marginTop="20px"
+                        android:layout_marginTop="10px"
                         android:layout_marginLeft="10px"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="26/06/2018"
                         android:textStyle="bold"
-                        android:textSize="30px"
+                        android:textSize="20px"
                         android:textColor="#928484"/>
                     <LinearLayout
-                        android:layout_marginTop="60px"
+                        android:layout_marginTop="30px"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -141,18 +141,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="0dp"
-                            android:layout_marginRight="10dp"
+                            android:layout_marginRight="5dp"
                             android:buttonTint="#FF5722"
                             android:checked="true"
                             android:text=""
                             android:textColor="@color/white" />
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_marginLeft="190px"
+                            android:layout_marginLeft="75px"
                             android:layout_height="wrap_content"
                             android:text="More"
                             android:textStyle="bold"
-                            android:textSize="30px"
+                            android:textSize="25px"
                             android:textColor="#807D7D"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -161,8 +161,8 @@
         <TableRow>
             <androidx.cardview.widget.CardView
                 android:id="@+id/crItem3Id"
-                android:layout_width="400px"
-                android:layout_height="400px"
+                android:layout_width="250px"
+                android:layout_height="250px"
                 android:shadowColor="@android:color/transparent"
                 android:padding="15dp"
                 android:visibility="invisible"
@@ -177,7 +177,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <TextView
-                        android:layout_marginTop="10px"
+                        android:layout_marginTop="5px"
                         android:layout_marginLeft="10px"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -186,25 +186,25 @@
                         android:textSize="30px"
                         android:textColor="#4CAF50"/>
                     <TextView
-                        android:layout_marginTop="50px"
+                        android:layout_marginTop="35px"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10px"
                         android:text="Left Item"
                         android:textStyle="bold"
-                        android:textSize="50px"
+                        android:textSize="30px"
                         android:textColor="#FF5722"/>
                     <TextView
-                        android:layout_marginTop="20px"
+                        android:layout_marginTop="10px"
                         android:layout_marginLeft="10px"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="26/06/2018"
                         android:textStyle="bold"
-                        android:textSize="30px"
+                        android:textSize="20px"
                         android:textColor="#928484"/>
                     <LinearLayout
-                        android:layout_marginTop="60px"
+                        android:layout_marginTop="30px"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -212,18 +212,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="0dp"
-                            android:layout_marginRight="10dp"
+                            android:layout_marginRight="5dp"
                             android:buttonTint="#FF5722"
                             android:checked="true"
                             android:text=""
                             android:textColor="@color/white" />
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_marginLeft="190px"
+                            android:layout_marginLeft="75px"
                             android:layout_height="wrap_content"
                             android:text="More"
                             android:textStyle="bold"
-                            android:textSize="30px"
+                            android:textSize="25px"
                             android:textColor="#807D7D"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -231,8 +231,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/crItem4Id"
-                android:layout_width="400px"
-                android:layout_height="400px"
+                android:layout_width="250px"
+                android:layout_height="250px"
                 android:shadowColor="@android:color/transparent"
                 android:padding="15dp"
                 android:visibility="invisible"
@@ -247,7 +247,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <TextView
-                        android:layout_marginTop="10px"
+                        android:layout_marginTop="5px"
                         android:layout_marginLeft="10px"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -256,25 +256,25 @@
                         android:textSize="30px"
                         android:textColor="#4CAF50"/>
                     <TextView
-                        android:layout_marginTop="50px"
+                        android:layout_marginTop="35px"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10px"
                         android:text="Left Item"
                         android:textStyle="bold"
-                        android:textSize="50px"
+                        android:textSize="30px"
                         android:textColor="#FF5722"/>
                     <TextView
-                        android:layout_marginTop="20px"
+                        android:layout_marginTop="10px"
                         android:layout_marginLeft="10px"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="26/06/2018"
                         android:textStyle="bold"
-                        android:textSize="30px"
+                        android:textSize="20px"
                         android:textColor="#928484"/>
                     <LinearLayout
-                        android:layout_marginTop="60px"
+                        android:layout_marginTop="30px"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -282,18 +282,18 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="0dp"
-                            android:layout_marginRight="10dp"
+                            android:layout_marginRight="5dp"
                             android:buttonTint="#FF5722"
                             android:checked="true"
                             android:text=""
                             android:textColor="@color/white" />
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_marginLeft="190px"
+                            android:layout_marginLeft="75px"
                             android:layout_height="wrap_content"
                             android:text="More"
                             android:textStyle="bold"
-                            android:textSize="30px"
+                            android:textSize="25px"
                             android:textColor="#807D7D"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -329,7 +329,21 @@
         android:textColor="#FFFFFF"
         android:background="@drawable/shapelogin"/>
 
-
+    <Button
+        android:id="@+id/btSendId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send Request"
+        android:visibility="invisible"
+        android:shadowColor="@android:color/transparent"
+        android:padding="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="0dp"
+        android:textSize="50px"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/shapesignup"/>
 
 
 

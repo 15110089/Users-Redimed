@@ -14,6 +14,7 @@ import android.widget.TextView;
 public class RequestAdvice extends AppCompatActivity {
 
     Button btAddItem;
+    Button btSend;
     CardView crItem1;
     CardView crItem2;
     CardView crItem3;
@@ -34,6 +35,7 @@ public class RequestAdvice extends AppCompatActivity {
 
         //ánh xạ
         btAddItem = (Button) findViewById(R.id.btAddItemId);
+        btSend = (Button) findViewById(R.id.btSendId);
         crItem1 = (CardView) findViewById(R.id.crItem1Id);
         crItem2 = (CardView) findViewById(R.id.crItem2Id);
         crItem3 = (CardView) findViewById(R.id.crItem3Id);
@@ -52,6 +54,7 @@ public class RequestAdvice extends AppCompatActivity {
         if(countItem>0){
             crItem1.setVisibility(View.VISIBLE);
             txtNotItem.setVisibility(View.INVISIBLE);
+            btSend.setVisibility(View.VISIBLE);
         }
         if(countItem>1){
             crItem2.setVisibility(View.VISIBLE);
