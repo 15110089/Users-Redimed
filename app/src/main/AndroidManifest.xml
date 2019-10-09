@@ -3,6 +3,8 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.example.users_redimed">
 
+    <dist:module dist:instant="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddItem2"></activity>
+        <activity android:name=".SignUpStep5"></activity>
+        <activity android:name=".SignUpStep4" />
+        <activity android:name=".SignUpStep3" />
+        <activity android:name=".SignUpStep2" />
+        <activity android:name=".SignUpStep1" />
+        <activity android:name=".AddItem2" />
         <activity android:name=".AddItem1" />
         <activity android:name=".AddItem" />
         <activity android:name=".RequestAdvice" />
@@ -24,7 +31,5 @@
             </intent-filter>
         </activity>
     </application>
-
-    <dist:module dist:instant="true" />
 
 </manifest>

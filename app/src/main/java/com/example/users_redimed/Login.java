@@ -22,6 +22,7 @@ package com.example.users_redimed;
 
 public class Login extends AppCompatActivity {
     Button btLogin;
+    TextView tvSignUp;
     int countItem = 0;
     User u = new User("","","");
     @Override
@@ -31,6 +32,7 @@ public class Login extends AppCompatActivity {
 
         //ánh xạ
         btLogin = (Button) findViewById(R.id.btLoginId);
+        tvSignUp = (TextView) findViewById(R.id.tvSignUpId);
 
         //code
         btLogin.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +41,14 @@ public class Login extends AppCompatActivity {
                 Intent it  =new Intent(Login.this,Option.class);
                 it.putExtra("CI",countItem);
                 startActivity(it);
+            }
+        });
+        tvSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it  =new Intent(Login.this,SignUpStep1.class);
+                startActivity(it);
+
             }
         });
         //log root
