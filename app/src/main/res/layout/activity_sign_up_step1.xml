@@ -5,111 +5,22 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="20dp"
-    android:background="#FF8C00">
+    android:background="@drawable/bg">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="308dp"
+        android:layout_height="117dp"
+        android:src="@drawable/logo" />
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="NEW"
-                android:textColor="#E4DBDB"
-                android:textSize="80px"
-                android:textStyle="bold" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ACCOUNT"
-                android:textColor="#E4DBDB"
-                android:textSize="80px"
-                android:textStyle="bold" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="50px">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="1/5"
-                android:textStyle="bold"
-                android:gravity="right"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="0dp"
-                android:layout_marginTop="0dp"
-                android:textSize="50px"
-                android:textColor="@color/white"
-                android:drawablePadding="6dp"
-                android:padding="4dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="steps"
-                android:gravity="right"
-
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="0dp"
-                android:textColor="@color/white"
-                android:drawablePadding="6dp"
-                android:padding="4dp"/>
-        </LinearLayout>
-
-    </LinearLayout>
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:layout_columnWeight="2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20px"
-            android:layout_marginRight="0px"
-            android:layout_marginTop="10px"
-            android:layout_marginBottom="10px"
-            android:background="@drawable/shapeleft"
-            android:drawablePadding="10dp"
-            android:hint="Title"
-            android:padding="15dp"
-            android:textColor="#3D3D37"
-            android:textColorHighlight="@color/white"
-            android:textColorHint="#7C7878" />
-        <EditText
-            android:layout_columnWeight="2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="0px"
-            android:layout_marginRight="20px"
-            android:layout_marginTop="10px"
-            android:layout_marginBottom="10px"
-            android:background="@drawable/shaperight"
-            android:drawablePadding="10dp"
-            android:hint="Gender"
-            android:padding="15dp"
-            android:textColor="#3D3D37"
-            android:textColorHighlight="@color/white"
-            android:textColorHint="#7C7878" />
-    </GridLayout>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@drawable/shapeemail"
+        android:drawableLeft="@drawable/email_icon"
+        android:background="@drawable/shapeinput"
         android:drawablePadding="10dp"
-        android:hint="First Name"
+        android:hint="Email"
         android:padding="15dp"
         android:textColor="#3D3D37"
         android:textColorHighlight="@color/white"
@@ -118,32 +29,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@drawable/shapeemail"
-        android:drawablePadding="10dp"
-        android:hint="Last Name"
         android:padding="15dp"
-        android:textColor="#3D3D37"
-        android:textColorHighlight="@color/white"
-        android:textColorHint="#7C7878" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="15dp"
-        android:background="@drawable/shapeemail"
+        android:background="@drawable/shapeinput"
         android:drawablePadding="10dp"
-        android:hint="Date of Birth"
+        android:hint="Password"
+        android:drawableLeft="@drawable/pass_icon"
         android:textColor="#3D3D37"
         android:textColorHint="#7C7878"
         android:textColorHighlight="@color/white"/>
-
-
     <Button
         android:id="@+id/btSignUpt1Id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="NEXT"
+        android:text="next"
+        android:textStyle="bold"
         android:shadowColor="@android:color/transparent"
         android:padding="15dp"
         android:layout_marginRight="10dp"
@@ -151,7 +50,12 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="0dp"
         android:textColor="#FFFFFF"
-        android:background="@drawable/shapelogin"/>
+        android:background="@drawable/shapebutton"/>
+
+
+
+
+
 
 
 </LinearLayout>
