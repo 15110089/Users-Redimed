@@ -21,7 +21,7 @@ public class SignUpStep2 extends AppCompatActivity {
         btSignUps2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it  =new Intent(SignUpStep2.this,SignUpStep3.class);
+                Intent it  =new Intent(SignUpStep2.this,Login.class);
                 startActivity(it);
             }
         });
