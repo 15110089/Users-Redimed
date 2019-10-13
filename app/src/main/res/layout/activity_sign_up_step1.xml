@@ -3,15 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    android:padding="20dp"
     android:background="@drawable/bg">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="308dp"
-        android:layout_height="117dp"
+        android:layout_width="match_parent"
+        android:layout_height="267dp"
         android:src="@drawable/logo" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="15dp"
+    android:background="@drawable/bg">
+
+
 
     <EditText
         android:layout_width="match_parent"
@@ -21,7 +30,7 @@
         android:background="@drawable/shapeinput"
         android:drawablePadding="10dp"
         android:hint="Email"
-        android:padding="15dp"
+        android:padding="10dp"
         android:textColor="#3D3D37"
         android:textColorHighlight="@color/white"
         android:textColorHint="#7C7878" />
@@ -29,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:padding="15dp"
+        android:padding="10dp"
         android:background="@drawable/shapeinput"
         android:drawablePadding="10dp"
         android:hint="Password"
@@ -37,18 +46,31 @@
         android:textColor="#3D3D37"
         android:textColorHint="#7C7878"
         android:textColorHighlight="@color/white"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/shapeinput"
+        android:drawableLeft="@drawable/pass_icon"
+        android:drawablePadding="10dp"
+        android:hint="Confirm PassWord"
+        android:padding="10dp"
+        android:textColor="#3D3D37"
+        android:textColorHighlight="@color/white"
+        android:textColorHint="#7C7878" />
     <Button
         android:id="@+id/btSignUpt1Id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="next"
+        android:text="CREATE ACCOUNT"
         android:textStyle="bold"
         android:shadowColor="@android:color/transparent"
-        android:padding="15dp"
+        android:padding="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="10dp"
         android:textColor="#FFFFFF"
         android:background="@drawable/shapebutton"/>
 
@@ -58,4 +80,5 @@
 
 
 
+</LinearLayout>
 </LinearLayout>
