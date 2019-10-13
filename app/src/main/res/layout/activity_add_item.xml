@@ -6,14 +6,14 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="20dp"
-    android:background="#FF8C00">
+    android:background="@drawable/bg">
 
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@drawable/shapeemail"
+        android:background="@drawable/shapeinput"
         android:drawablePadding="10dp"
         android:hint="Item name"
         android:padding="15dp"
@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@drawable/shapeemail"
+        android:background="@drawable/shapeinput"
         android:drawablePadding="10dp"
         android:hint="Region part"
         android:padding="15dp"
@@ -63,7 +63,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="0dp"
         android:textColor="#FFFFFF"
-        android:background="@drawable/shapelogin"/>
+        android:background="@drawable/shapebutton"/>
 
 
 </LinearLayout>

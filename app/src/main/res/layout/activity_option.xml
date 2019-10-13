@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="20dp"
-    android:background="#FF8C00">
+    android:background="@drawable/bg">
 
     <TableLayout
         android:layout_width="wrap_content"
@@ -23,9 +23,9 @@
                 android:layout_marginBottom="10dp"
                 android:width="250px"
                 android:height="250px"
-                android:background="@drawable/shapesignup"
+                android:background="@drawable/shapeoption"
                 android:padding="15dp"
-                android:drawableTop="@drawable/profile"
+                android:drawableTop="@drawable/request_icon"
                 android:shadowColor="@android:color/transparent"
                 android:text="Request Advice"
                 android:textColor="#FFFFFF"
@@ -38,9 +38,8 @@
                 android:layout_marginBottom="10dp"
                 android:width="250px"
                 android:height="250px"
-                android:background="@drawable/shapesignup"
-
-                android:drawableTop="@drawable/profile"
+                android:background="@drawable/shapeoption"
+                android:drawableTop="@drawable/track_icon"
                 android:padding="15dp"
                 android:shadowColor="@android:color/transparent"
                 android:text="Track My Request"
@@ -56,9 +55,8 @@
                 android:width="250px"
                 android:height="250px"
                 android:textSize="25px"
-                android:drawableTop="@drawable/profile"
-
-                android:background="@drawable/shapesignup"
+                android:drawableTop="@drawable/profile_icon"
+                android:background="@drawable/shapeoption"
                 android:padding="15dp"
                 android:shadowColor="@android:color/transparent"
                 android:text="Profile"
@@ -72,9 +70,8 @@
                 android:width="250px"
                 android:height="250px"
                 android:textSize="25px"
-                android:drawableTop="@drawable/profile"
-
-                android:background="@drawable/shapesignup"
+                android:drawableTop="@drawable/aboutus_icon"
+                android:background="@drawable/shapeoption"
                 android:padding="15dp"
                 android:shadowColor="@android:color/transparent"
                 android:text="About Us"

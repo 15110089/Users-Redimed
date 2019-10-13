@@ -4,7 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".AddItem1">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/bg">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/idImg1"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/shapeborderimage"
+                android:src="@drawable/photot_icon" />
+            <ImageView
+                android:id="@+id/idImg2"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:background="@drawable/shapeborderimage"
+                android:scaleType="fitXY"
+                android:src="@drawable/photot_icon" />
+        </TableRow>
+        <TableRow>
+            <ImageView
+                android:id="@+id/idImg3"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:background="@drawable/shapeborderimage"
+                android:scaleType="fitXY"
+                android:src="@drawable/photot_icon" />
+            <ImageView
+                android:id="@+id/idImg4"
+                android:background="@drawable/shapeborderimage"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/photot_icon" />
+        </TableRow>
+
+
+    </TableLayout>
+    <Button
+        android:id="@+id/idBtNext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:textStyle="bold"
+        android:shadowColor="@android:color/transparent"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="40dp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/shapebutton"/>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

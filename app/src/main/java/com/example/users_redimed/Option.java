@@ -28,7 +28,7 @@ public class Option extends AppCompatActivity {
         btRequestAdvice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it  =new Intent(Option.this,RequestAdvice.class);
+                Intent it  =new Intent(Option.this,AddItem.class);
                 it.putExtra("CI",countItem);
                 startActivity(it);
             }
