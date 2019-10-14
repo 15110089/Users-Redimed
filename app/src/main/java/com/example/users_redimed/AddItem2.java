@@ -31,7 +31,7 @@ public class AddItem2 extends AppCompatActivity {
         btFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it  =new Intent(AddItem2.this,Option.class);
+                Intent it  =new Intent(AddItem2.this,Review.class);
                 it.putExtra("CI",countItem);
                 startActivity(it);
 
