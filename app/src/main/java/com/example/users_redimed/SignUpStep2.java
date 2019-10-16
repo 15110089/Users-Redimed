@@ -66,7 +66,7 @@ public class SignUpStep2 extends AppCompatActivity {
 
                                 User u = node.getValue(User.class);
                                 if (u.Email.equals(txtEmail.getText().toString())) {
-                                    Toast.makeText(SignUpStep2.this, "Email đã được đăng ký vui lòng dung Email khác", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(SignUpStep2.this, "Email đã được đăng ký", Toast.LENGTH_SHORT).show();
                                     tao = 0;
                                 }
                             }

@@ -5,6 +5,7 @@ package com.example.users_redimed;
         import androidx.lifecycle.ViewModelProviders;
 
         import android.content.Intent;
+        import android.database.Cursor;
         import android.os.Bundle;
         import android.util.Log;
         import android.view.View;
@@ -26,6 +27,7 @@ public class Login extends AppCompatActivity {
     TextView tvSignUp;
     TextView txtEmail;
     TextView txtPass;
+    Database databasel;
     int countItem = 0;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
@@ -40,6 +42,7 @@ public class Login extends AppCompatActivity {
         tvSignUp = (TextView) findViewById(R.id.tvSignUpId);
         txtEmail = (TextView) findViewById(R.id.txtEmail);
         txtPass = (TextView) findViewById(R.id.txtPass);
+        databasel = new Database(this,"redimed.sqlite",null,1);
 
         //code
         btLogin.setOnClickListener(new View.OnClickListener() {
@@ -53,9 +56,21 @@ public class Login extends AppCompatActivity {
                             User u = node.getValue(User.class);
                             if(u.Email.equals(txtEmail.getText().toString())&&u.Pass.equals(txtPass.getText().toString())){
                                 Intent it  =new Intent(Login.this,Option.class);
+
+                                //create table
+                                databasel.QueryData("CREATE TABLE IF NOT EXISTS TabelUser(Id INTEGER PRIMARY KEY, Email VARCHAR(200))");
+                                Cursor itemTests = databasel.GetData("SELECT * FROM TabelUser");
+                                while (itemTests.moveToNext()){
+                                    databasel.QueryData("UPDATE TabelUser SET Email ='"+ u.Email +"' WHERE Id = 1");
+                                    it.putExtra("CI",countItem);
+                                        startActivity(it);
+                                    return;
+                                }
+                                databasel.QueryData("INSERT INTO TabelUser VALUES(1,'"+u.Email+"')");
                                 it.putExtra("CI",countItem);
                                 startActivity(it);
                                 return;
+
                             }
                         }
                         Toast.makeText(Login.this, "Email hoặc Password không đúng", Toast.LENGTH_LONG).show();
