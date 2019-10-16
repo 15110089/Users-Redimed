@@ -23,20 +23,22 @@
         android:background="@drawable/bg">
 
 
-
         <EditText
+            android:id="@+id/txtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:drawableLeft="@drawable/email_icon"
             android:background="@drawable/shapeinput"
+            android:drawableLeft="@drawable/email_icon"
             android:drawablePadding="10dp"
             android:hint="Email"
             android:padding="10dp"
             android:textColor="#3D3D37"
             android:textColorHighlight="@color/white"
             android:textColorHint="#7C7878" />
+
         <EditText
+            android:id="@+id/txtPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -44,12 +46,14 @@
             android:background="@drawable/shapeinput"
             android:drawablePadding="10dp"
             android:hint="Password"
+            android:inputType="textPassword"
             android:drawableLeft="@drawable/pass_icon"
             android:textColor="#3D3D37"
             android:textColorHint="#7C7878"
             android:textColorHighlight="@color/white"/>
 
         <EditText
+            android:id="@+id/txtConfirmPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -57,6 +61,7 @@
             android:drawableLeft="@drawable/pass_icon"
             android:drawablePadding="10dp"
             android:hint="Confirm Password"
+            android:inputType="textPassword"
             android:padding="10dp"
             android:textColor="#3D3D37"
             android:textColorHighlight="@color/white"

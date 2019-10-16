@@ -35,7 +35,7 @@ public class rootData extends ViewModel {
     }
     //&
     public void setUser(User user) {
-        myRef.child("User").child(user.id).setValue(user);
+      //  myRef.child("User").child(user.id).setValue(user);
     }
 
 }

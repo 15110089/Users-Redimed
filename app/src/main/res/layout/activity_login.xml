@@ -26,6 +26,7 @@
 
 
         <EditText
+            android:id="@+id/txtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -38,6 +39,7 @@
             android:textColorHighlight="@color/white"
             android:textColorHint="#7C7878" />
         <EditText
+            android:id="@+id/txtPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -45,6 +47,7 @@
             android:background="@drawable/shapeinput"
             android:drawablePadding="10dp"
             android:hint="Password"
+            android:inputType="textPassword"
             android:drawableLeft="@drawable/pass_icon"
             android:textColor="#3D3D37"
             android:textColorHint="#7C7878"

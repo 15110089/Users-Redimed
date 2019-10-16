@@ -25,6 +25,7 @@
 
 
     <EditText
+        android:id="@+id/txtName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -36,7 +37,8 @@
         android:textColor="#3D3D37"
         android:textColorHighlight="@color/white"
         android:textColorHint="#7C7878" />
-    <EditText
+    <Spinner
+        android:id="@+id/txtGender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -49,19 +51,22 @@
         android:textColorHighlight="@color/white"
         android:textColorHint="#7C7878" />
     <EditText
+        android:id="@+id/txtBirth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:padding="10dp"
         android:background="@drawable/shapeinput"
         android:drawablePadding="10dp"
-        android:hint="Date of burst"
+        android:hint="Date of birth"
         android:drawableLeft="@drawable/burst_icon"
         android:textColor="#3D3D37"
         android:textColorHint="#7C7878"
+        android:inputType="date"
         android:textColorHighlight="@color/white"/>
 
     <EditText
+        android:id="@+id/txtPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"

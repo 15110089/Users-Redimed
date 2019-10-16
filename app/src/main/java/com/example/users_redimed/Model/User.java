@@ -1,15 +1,23 @@
 package com.example.users_redimed.Model;
 
 public class User {
-    public String name;
-    public String sdt;
-    public String id;
+    public String Name;
+    public String Gender;
+    public String Birth;
+    public String Phone;
+    public String Email;
+    public String Pass;
 
-    public User() {}
-
-    public User(String name, String sdt, String id) {
-        this.name = name;
-        this.sdt = sdt;
-        this.id = id;
+    public User() {
     }
+
+    public User(String name, String gender, String birth, String phone, String email, String pass) {
+        Name = name;
+        Gender = gender;
+        Birth = birth;
+        Phone = phone;
+        Email = email;
+        Pass = pass;
+    }
+
 }
