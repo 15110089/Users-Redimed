@@ -1,5 +1,6 @@
 package com.example.users_redimed;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,10 +9,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import java.io.ByteArrayOutputStream;
@@ -19,6 +23,25 @@ import java.io.ByteArrayOutputStream;
 public class Review extends AppCompatActivity {
 
     ImageView Img1;
+    ImageView Img2;
+    ImageView Img3;
+    ImageView Img4;
+    EditText txtQuestion1;
+    EditText txtRegion;
+    EditText txtQuestion2;
+    EditText txtQuestion3;
+    EditText txtQuestion4;
+    CheckBox cbQuestion1;
+    CheckBox cbQuestion2;
+    CheckBox cbQuestion3;
+    CheckBox cbQuestion4;
+    CheckBox cbQuestion5;
+    CheckBox cbQuestion6;
+    CheckBox cbQuestion7;
+    CheckBox cbQuestion8;
+    CheckBox cbQuestion9;
+    CheckBox cbQuestion10;
+    CheckBox cbQuestion11;
     Button btSend;
     Database databasel;
     @Override
@@ -30,6 +53,25 @@ public class Review extends AppCompatActivity {
         databasel = new Database(this,"redimed.sqlite",null,1);
         btSend = (Button) findViewById(R.id.btSendId);
         Img1 = (ImageView) findViewById(R.id.idImg1);
+        Img2 = (ImageView) findViewById(R.id.idImg2);
+        Img3 = (ImageView) findViewById(R.id.idImg3);
+        Img4 = (ImageView) findViewById(R.id.idImg4);
+        txtRegion = (EditText) findViewById(R.id.txtRegion);
+        txtQuestion1 = (EditText) findViewById(R.id.txtQuestion1);
+        txtQuestion2 = (EditText) findViewById(R.id.txtQuestion2);
+        txtQuestion3 = (EditText) findViewById(R.id.txtQuestion3);
+        txtQuestion4 = (EditText) findViewById(R.id.txtQuestion4);
+        cbQuestion1 = (CheckBox) findViewById(R.id.cbQuestion1);
+        cbQuestion2 = (CheckBox) findViewById(R.id.cbQuestion2);
+        cbQuestion3 = (CheckBox) findViewById(R.id.cbQuestion3);
+        cbQuestion4 = (CheckBox) findViewById(R.id.cbQuestion4);
+        cbQuestion5 = (CheckBox) findViewById(R.id.cbQuestion5);
+        cbQuestion6 = (CheckBox) findViewById(R.id.cbQuestion6);
+        cbQuestion7 = (CheckBox) findViewById(R.id.cbQuestion7);
+        cbQuestion8 = (CheckBox) findViewById(R.id.cbQuestion8);
+        cbQuestion9 = (CheckBox) findViewById(R.id.cbQuestion9);
+        cbQuestion10 = (CheckBox) findViewById(R.id.cbQuestion10);
+        cbQuestion11 = (CheckBox) findViewById(R.id.cbQuestion11);
         //code
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,14 +80,131 @@ public class Review extends AppCompatActivity {
                 startActivity(it);
             }
         });
+        //code
+        Img1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent,1);
+            }
+        });
+        Img2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent,2);
+            }
+        });
+        Img3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent,3);
+            }
+        });
+        Img4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent,4);
+            }
+        });
+        //region
+        Cursor itemName = databasel.GetData("SELECT * FROM TabelName WHERE Id = 1");
+        while (itemName.moveToNext()){
+            txtRegion.setText(itemName.getString(2));
+        }
         //Get id
-        Cursor itemTest = databasel.GetData("SELECT * FROM TabelImage1 WHERE Id = 1");
-        while (itemTest.moveToNext()){
-            String Image = itemTest.getString(1);
-            Img1.setImageBitmap(StringToBitMap(Image));
-
+        //get image 1
+        Cursor itemimage1 = databasel.GetData("SELECT * FROM TabelImage1 WHERE Id = 1");
+        while (itemimage1.moveToNext()){
+            String Image1 = itemimage1.getString(1);
+            Img1.setImageBitmap(StringToBitMap(Image1));
+        }
+        //get image 2
+        Cursor itemimage2 = databasel.GetData("SELECT * FROM TabelImage2 WHERE Id = 1");
+        while (itemimage2.moveToNext()){
+            String Image2 = itemimage2.getString(1);
+            Img2.setImageBitmap(StringToBitMap(Image2));
+        }
+        //get image 3
+        Cursor itemimage3 = databasel.GetData("SELECT * FROM TabelImage3 WHERE Id = 1");
+        while (itemimage3.moveToNext()){
+            String Image3 = itemimage3.getString(1);
+            Img3.setImageBitmap(StringToBitMap(Image3));
+        }
+        //get image 4
+        Cursor itemimage4 = databasel.GetData("SELECT * FROM TabelImage4 WHERE Id = 1");
+        while (itemimage4.moveToNext()){
+            String Image4 = itemimage4.getString(1);
+            Img4.setImageBitmap(StringToBitMap(Image4));
+        }
+        //question
+        Cursor itemQuestioin = databasel.GetData("SELECT * FROM TabelQuestion WHERE Id = 1");
+        while (itemQuestioin.moveToNext()){
+            txtQuestion1.setText(itemQuestioin.getString(1));
+            txtQuestion2.setText(itemQuestioin.getString(2));
+            txtQuestion3.setText(itemQuestioin.getString(3));
+            txtQuestion4.setText(itemQuestioin.getString(4));
+            if(itemQuestioin.getString(5).equals("1"))
+                cbQuestion1.setChecked(true);
+            if(itemQuestioin.getString(6).equals("1"))
+                cbQuestion2.setChecked(true);
+            if(itemQuestioin.getString(7).equals("1"))
+                cbQuestion3.setChecked(true);
+            if(itemQuestioin.getString(8).equals("1"))
+                cbQuestion4.setChecked(true);
+            if(itemQuestioin.getString(9).equals("1"))
+                cbQuestion5.setChecked(true);
+            if(itemQuestioin.getString(10).equals("1"))
+                cbQuestion6.setChecked(true);
+            if(itemQuestioin.getString(11).equals("1"))
+                cbQuestion7.setChecked(true);
+            if(itemQuestioin.getString(12).equals("1"))
+                cbQuestion8.setChecked(true);
+            if(itemQuestioin.getString(13).equals("1"))
+                cbQuestion9.setChecked(true);
+            if(itemQuestioin.getString(14).equals("1"))
+                cbQuestion10.setChecked(true);
+            if(itemQuestioin.getString(15).equals("1"))
+                cbQuestion11.setChecked(true);
         }
 
+
+    }
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        if(requestCode==1&&resultCode==RESULT_OK&&data!=null)
+        {
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            Img1.setImageBitmap(bitmap);
+            String UrlImage = BitMapToString(bitmap);
+            databasel.QueryData("UPDATE TabelImage1 SET Image ='"+ UrlImage +"' WHERE Id = 1");
+        }
+        if(requestCode==2&&resultCode==RESULT_OK&&data!=null)
+        {
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            Img2.setImageBitmap(bitmap);
+            String UrlImage2 = BitMapToString(bitmap);
+            databasel.QueryData("UPDATE TabelImage1 SET Image ='"+ UrlImage2 +"' WHERE Id = 1");
+        }
+        if(requestCode==3&&resultCode==RESULT_OK&&data!=null)
+        {
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            Img3.setImageBitmap(bitmap);
+            String UrlImage3 = BitMapToString(bitmap);
+            databasel.QueryData("UPDATE TabelImage1 SET Image ='"+ UrlImage3 +"' WHERE Id = 1");
+        }
+        if(requestCode==4&&resultCode==RESULT_OK&&data!=null)
+        {
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            Img4.setImageBitmap(bitmap);
+            String UrlImage4 = BitMapToString(bitmap);
+            databasel.QueryData("UPDATE TabelImage1 SET Image ='"+ UrlImage4 +"' WHERE Id = 1");
+        }
+
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     public Bitmap StringToBitMap(String encodedString){

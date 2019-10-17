@@ -39,6 +39,10 @@ public class AddItem1 extends AppCompatActivity {
 
         //Ánh xạ
         databasel = new Database(this,"redimed.sqlite",null,1);
+        databasel.QueryData("CREATE TABLE IF NOT EXISTS TabelImage1(Id INTEGER PRIMARY KEY, Image VARCHAR(500))");
+        databasel.QueryData("CREATE TABLE IF NOT EXISTS TabelImage2(Id INTEGER PRIMARY KEY, Image VARCHAR(500))");
+        databasel.QueryData("CREATE TABLE IF NOT EXISTS TabelImage3(Id INTEGER PRIMARY KEY, Image VARCHAR(500))");
+        databasel.QueryData("CREATE TABLE IF NOT EXISTS TabelImage4(Id INTEGER PRIMARY KEY, Image VARCHAR(500))");
         img1 = (ImageView) findViewById(R.id.idImg1);
         img2 = (ImageView) findViewById(R.id.idImg2);
         img3 = (ImageView) findViewById(R.id.idImg3);
@@ -82,8 +86,11 @@ public class AddItem1 extends AppCompatActivity {
                 startActivityForResult(intent,4);
             }
         });
-
-
+        //restart image
+        databasel.QueryData("DELETE FROM TabelImage1 WHERE Id = 1");
+        databasel.QueryData("DELETE FROM TabelImage2 WHERE Id = 1");
+        databasel.QueryData("DELETE FROM TabelImage3 WHERE Id = 1");
+        databasel.QueryData("DELETE FROM TabelImage4 WHERE Id = 1");
 
     }
 
@@ -94,31 +101,28 @@ public class AddItem1 extends AppCompatActivity {
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             img1.setImageBitmap(bitmap);
             String UrlImage = BitMapToString(bitmap);
-            databasel.QueryData("CREATE TABLE IF NOT EXISTS TabelImage1(Id INTEGER PRIMARY KEY, Image VARCHAR(500))");
-            Cursor itemTests = databasel.GetData("SELECT * FROM TabelImage1");
-            int luu = 0;
-            while (itemTests.moveToNext()){
-                databasel.QueryData("UPDATE TabelImage1 SET Image ='"+ UrlImage +"' WHERE Id = 1");
-                luu =1;
-            }
-            if(luu==0){
-                databasel.QueryData("INSERT INTO TabelImage1 VALUES(1,'"+UrlImage+"')");
-            }
+            databasel.QueryData("INSERT INTO TabelImage1 VALUES(1,'"+UrlImage+"')");
         }
         if(requestCode==2&&resultCode==RESULT_OK&&data!=null)
         {
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             img2.setImageBitmap(bitmap);
+            String UrlImage2 = BitMapToString(bitmap);
+            databasel.QueryData("INSERT INTO TabelImage2 VALUES(1,'"+UrlImage2 +"')");
         }
         if(requestCode==3&&resultCode==RESULT_OK&&data!=null)
         {
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             img3.setImageBitmap(bitmap);
+            String UrlImage3 = BitMapToString(bitmap);
+            databasel.QueryData("INSERT INTO TabelImage3 VALUES(1,'"+UrlImage3 +"')");
         }
         if(requestCode==4&&resultCode==RESULT_OK&&data!=null)
         {
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             img4.setImageBitmap(bitmap);
+            String UrlImage4 = BitMapToString(bitmap);
+            databasel.QueryData("INSERT INTO TabelImage4 VALUES(1,'"+UrlImage4 +"')");
         }
 
 

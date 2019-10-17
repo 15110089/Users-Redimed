@@ -8,8 +8,8 @@
     tools:context=".Review">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,261 +56,498 @@
                         android:src="@drawable/photot_icon" />
                 </TableRow>
             </TableLayout>
+            <EditText
+                android:id="@+id/txtRegion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/shapeinput"
+                android:drawablePadding="10dp"
+                android:padding="15dp"
+                android:textColor="#3D3D37"
+                android:textColorHighlight="@color/white"
+                android:textColorHint="#7C7878" />
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="149dp"
                 android:layout_height="276dp"
                 android:src="@drawable/body" />
+
             <LinearLayout
-                android:paddingLeft="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="20dp">
 
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Lorem isum dolar sit amet"
-                    android:textSize="35px"
-                    android:textStyle="bold"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="0dp"
-                    android:textColor="@color/white"
-                    android:drawablePadding="6dp"
-                    android:padding="4dp"/>
+                    android:orientation="horizontal">
 
-                <CheckBox
-                    android:layout_width="wrap_content"
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginBottom="10dp"
+                        android:drawablePadding="6dp"
+                        android:padding="4dp"
+                        android:text="Initial consult"
+                        android:textColor="@color/white"
+                        android:textSize="35px"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/cbQuestion1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:buttonTint="@color/white"
+                        android:checked="false"
+                        android:text=""
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginBottom="10dp"
+                        android:drawablePadding="6dp"
+                        android:padding="4dp"
+                        android:text="Review"
+                        android:textColor="@color/white"
+                        android:textSize="35px"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/cbQuestion2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:buttonTint="@color/white"
+                        android:checked="false"
+                        android:text=""
+                        android:textColor="@color/white" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:buttonTint="@color/white"
-                    android:checked="false"
-                    android:text=""
-                    android:textColor="@color/white" />
+                    android:orientation="horizontal">
 
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginBottom="10dp"
+                        android:drawablePadding="6dp"
+                        android:padding="4dp"
+                        android:text="For result"
+                        android:textColor="@color/white"
+                        android:textSize="35px"
+                        android:textStyle="bold" />
 
+                    <CheckBox
+                        android:id="@+id/cbQuestion3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:buttonTint="@color/white"
+                        android:checked="false"
+                        android:text=""
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginBottom="10dp"
+                        android:drawablePadding="6dp"
+                        android:padding="4dp"
+                        android:text="Recall"
+                        android:textColor="@color/white"
+                        android:textSize="35px"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/cbQuestion4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:buttonTint="@color/white"
+                        android:checked="false"
+                        android:text=""
+                        android:textColor="@color/white" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:drawablePadding="6dp"
+                        android:padding="4dp"
+                        android:text="History of immunosuppression"
+                        android:textColor="@color/white"
+                        android:textSize="35px"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/cbQuestion5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:buttonTint="@color/white"
+                        android:checked="false"
+                        android:text=""
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:drawablePadding="6dp"
+                        android:padding="4dp"
+                        android:text="Have you had MELANOMA"
+                        android:textColor="@color/white"
+                        android:textSize="35px"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/cbQuestion6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:buttonTint="@color/white"
+                        android:checked="false"
+                        android:text=""
+                        android:textColor="@color/white" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <EditText
+                        android:id="@+id/txtQuestion1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="15dp"
+                        android:backgroundTint="@android:color/white"
+                        android:drawablePadding="10dp"
+                        android:hint="If YES, when was it diagnosed"
+                        android:padding="10dp"
+                        android:textColor="@color/white"
+                        android:textColorHighlight="#7C7878"
+                        android:textColorHint="#ADA6A6"
+                        android:textColorLink="@color/white"
+                        android:textSize="35px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:drawablePadding="6dp"
+                        android:padding="4dp"
+                        android:text="Was it metatastatic"
+                        android:textColor="@color/white"
+                        android:textSize="35px"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/cbQuestion7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:buttonTint="@color/white"
+                        android:checked="false"
+                        android:text=""
+                        android:textColor="@color/white" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:drawablePadding="6dp"
+                        android:padding="4dp"
+                        android:text="Have you had other skin cancer"
+                        android:textColor="@color/white"
+                        android:textSize="35px"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/cbQuestion8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:buttonTint="@color/white"
+                        android:checked="false"
+                        android:text=""
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:drawablePadding="6dp"
+                        android:padding="4dp"
+                        android:text="Do you have any skin lesion"
+                        android:textColor="@color/white"
+                        android:textSize="35px"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/cbQuestion9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:buttonTint="@color/white"
+                        android:checked="false"
+                        android:text=""
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtQuestion2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="15dp"
+                        android:backgroundTint="@android:color/white"
+                        android:drawablePadding="10dp"
+                        android:hint="If YES, where"
+                        android:padding="10dp"
+                        android:textColor="@color/white"
+                        android:textColorHighlight="#7C7878"
+                        android:textColorHint="#ADA6A6"
+                        android:textColorLink="@color/white"
+                        android:textSize="35px" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:drawablePadding="6dp"
+                        android:padding="4dp"
+                        android:text="Has you changed"
+                        android:textColor="@color/white"
+                        android:textSize="35px"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/cbQuestion10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:buttonTint="@color/white"
+                        android:checked="false"
+                        android:text=""
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtQuestion3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="15dp"
+                        android:backgroundTint="@android:color/white"
+                        android:drawablePadding="10dp"
+                        android:hint="If YES, please describe"
+                        android:padding="10dp"
+                        android:textColor="@color/white"
+                        android:textColorHighlight="#7C7878"
+                        android:textColorHint="#ADA6A6"
+                        android:textColorLink="@color/white"
+                        android:textSize="35px" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:drawablePadding="6dp"
+                        android:padding="4dp"
+                        android:text="A family history of skin cancer"
+                        android:textColor="@color/white"
+                        android:textSize="35px"
+                        android:textStyle="bold" />
+
+                    <CheckBox
+                        android:id="@+id/cbQuestion11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:buttonTint="@color/white"
+                        android:checked="false"
+                        android:text=""
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txtQuestion4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="15dp"
+                        android:backgroundTint="@android:color/white"
+                        android:drawablePadding="10dp"
+                        android:hint="If YES, do you know what type"
+                        android:padding="10dp"
+                        android:textColor="@color/white"
+                        android:textColorHighlight="#7C7878"
+                        android:textColorHint="#ADA6A6"
+                        android:textColorLink="@color/white"
+                        android:textSize="35px" />
+                </LinearLayout>
             </LinearLayout>
-            <LinearLayout
-                android:paddingLeft="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lorem isum dolar sit amet"
-                    android:textSize="35px"
-                    android:textStyle="bold"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="0dp"
-                    android:textColor="@color/white"
-                    android:drawablePadding="6dp"
-                    android:padding="4dp"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:buttonTint="@color/white"
-                    android:checked="false"
-                    android:text=""
-                    android:textColor="@color/white" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:paddingLeft="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lorem isum dolar sit amet"
-                    android:textSize="35px"
-                    android:textStyle="bold"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="0dp"
-                    android:textColor="@color/white"
-                    android:drawablePadding="6dp"
-                    android:padding="4dp"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:buttonTint="@color/white"
-                    android:checked="false"
-                    android:text=""
-                    android:textColor="@color/white" />
-
-
-
-            </LinearLayout>
-            <LinearLayout
-                android:paddingLeft="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lorem isum dolar sit amet"
-                    android:textSize="35px"
-                    android:textStyle="bold"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="0dp"
-                    android:textColor="@color/white"
-                    android:drawablePadding="6dp"
-                    android:padding="4dp"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:buttonTint="@color/white"
-                    android:checked="false"
-                    android:text=""
-                    android:textColor="@color/white" />
-
-
-            </LinearLayout>
-            <LinearLayout
-                android:paddingLeft="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lorem isum dolar sit amet"
-                    android:textSize="35px"
-                    android:textStyle="bold"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="0dp"
-                    android:textColor="@color/white"
-                    android:drawablePadding="6dp"
-                    android:padding="4dp"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:buttonTint="@color/white"
-                    android:checked="false"
-                    android:text=""
-                    android:textColor="@color/white" />
-
-
-
-            </LinearLayout>
-            <LinearLayout
-                android:paddingLeft="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lorem isum dolar sit amet"
-                    android:textSize="35px"
-                    android:textStyle="bold"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="0dp"
-                    android:textColor="@color/white"
-                    android:drawablePadding="6dp"
-                    android:padding="4dp"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:buttonTint="@color/white"
-                    android:checked="false"
-                    android:text=""
-                    android:textColor="@color/white" />
-
-
-
-            </LinearLayout>
-            <LinearLayout
-                android:paddingLeft="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lorem isum dolar sit amet"
-                    android:textSize="35px"
-                    android:textStyle="bold"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="0dp"
-                    android:textColor="@color/white"
-                    android:drawablePadding="6dp"
-                    android:padding="4dp"/>
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="70px"
-                    android:text="4 yesr"
-                    android:textSize="25px"
-                    android:shadowColor="@android:color/transparent"
-                    android:padding="0dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="0dp"
-                    android:textColor="#FF9800"
-                    android:background="@drawable/shapeyear"/>
-
-
-            </LinearLayout>
             <Button
                 android:id="@+id/btSendId"
                 android:layout_width="match_parent"

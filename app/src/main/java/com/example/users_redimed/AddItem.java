@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +17,10 @@ import java.util.List;
 public class AddItem extends AppCompatActivity {
 
     Spinner spRegionBody;
+    EditText txtName;
     Button btNextAddItem1;
     int countItem;
+    Database databasel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,9 +32,12 @@ public class AddItem extends AppCompatActivity {
             countItem = bd.getInt("CI");
         }
         //ánh xạ
+        databasel = new Database(this,"redimed.sqlite",null,1);
+        databasel.QueryData("CREATE TABLE IF NOT EXISTS TabelName(Id INTEGER PRIMARY KEY, Name VARCHAR(500), Region VARCHAR(500))");
         spRegionBody = (Spinner) findViewById(R.id.spRegionBodyId);
+        txtName = (EditText) findViewById(R.id.txtName);
         btNextAddItem1 = (Button) findViewById(R.id.btAddItem1Id);
-
+        databasel.QueryData("DELETE FROM TabelName WHERE Id = 1");
         //code
         List<String> list = new ArrayList<>();
         list.add("Region left back");
@@ -43,6 +50,7 @@ public class AddItem extends AppCompatActivity {
         btNextAddItem1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                databasel.QueryData("INSERT INTO TabelName VALUES(1,'"+txtName.getText().toString()+"','"+spRegionBody.getSelectedItem().toString()+"')");
                 Intent it  =new Intent(AddItem.this,AddItem1.class);
                 it.putExtra("CI",countItem);
                 startActivity(it);
