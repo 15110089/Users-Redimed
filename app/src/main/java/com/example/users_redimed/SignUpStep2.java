@@ -58,28 +58,36 @@ public class SignUpStep2 extends AppCompatActivity {
             public void onClick(View v) {
                 if (txtPass.getText().toString().equals(txtConfirmPass.getText().toString())) {
 
-                    myRef.child("User").addValueEventListener(new ValueEventListener() {
+                    myRef.child("Patient").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             int tao = 1;
                             for (DataSnapshot node : dataSnapshot.getChildren()) {
-
-                                User u = node.getValue(User.class);
-                                if (u.Email.equals(txtEmail.getText().toString())) {
+                                String u = node.getKey();
+                                u = u + "@gmail.com";
+                                if (u.equals(txtEmail.getText().toString())) {
                                     Toast.makeText(SignUpStep2.this, "Email đã được đăng ký", Toast.LENGTH_SHORT).show();
                                     tao = 0;
                                 }
                             }
                             if (tao == 1) {
-                                user.Name = bdTxtName;
-                                user.Gender = bdTxtGender;
-                                user.Birth = bdTxtBirth;
-                                user.Phone = bdTxtPhone;
-                                user.Email = txtEmail.getText().toString();
-                                user.Pass = txtPass.getText().toString();
-                                myRef.child("User").push().setValue(user);
-                                Intent it = new Intent(SignUpStep2.this, Login.class);
-                                startActivity(it);
+                                try{
+                                    user.Name = bdTxtName;
+                                    user.Gender = bdTxtGender;
+                                    user.Birth = bdTxtBirth;
+                                    user.Phone = bdTxtPhone;
+                                    user.Email = txtEmail.getText().toString();
+                                    user.Pass = txtPass.getText().toString();
+                                    String[] keys = txtEmail.getText().toString().split("@");
+                                    String key =  keys[0];
+
+                                    myRef.child("Patient").child(key).child("Profile").setValue(user);
+                                    Intent it = new Intent(SignUpStep2.this, Login.class);
+                                    startActivity(it);
+                                }
+                                catch(Exception e) {
+                                    Toast.makeText(SignUpStep2.this, "Email Không hợp lệ", Toast.LENGTH_SHORT).show();
+                                }
                             }
                         }
                         @Override

@@ -1,5 +1,6 @@
 package com.example.users_redimed;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +8,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -17,6 +20,20 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.example.users_redimed.Model.Request;
+import com.example.users_redimed.Model.User;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 
@@ -42,15 +59,31 @@ public class Review extends AppCompatActivity {
     CheckBox cbQuestion9;
     CheckBox cbQuestion10;
     CheckBox cbQuestion11;
+    String key;
+    int image1Invalid = 0;
+    int image2Invalid = 0;
+    int image3Invalid = 0;
+    int image4Invalid = 0;
     Button btSend;
+    String user;
     Database databasel;
+    Request rq = new Request();
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    StorageReference storageRef = storage.getReference();
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = database.getReference();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
 
-        //ánh xạ
+        //Get id
         databasel = new Database(this,"redimed.sqlite",null,1);
+        Cursor itemTest = databasel.GetData("SELECT * FROM TabelUser WHERE Id = 1");
+        while (itemTest.moveToNext()){
+            user = itemTest.getString(1);
+        }
+        //ánh xạ
         btSend = (Button) findViewById(R.id.btSendId);
         Img1 = (ImageView) findViewById(R.id.idImg1);
         Img2 = (ImageView) findViewById(R.id.idImg2);
@@ -76,8 +109,199 @@ public class Review extends AppCompatActivity {
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it  =new Intent(Review.this,Option.class);
+
+                String[] keys = user.split("@");
+                key = keys[0];
+                myRef.child("Patient").child(key).child("Request").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
+                        long keyRequest =  dataSnapshot.getChildrenCount();
+                        keyRequest = keyRequest +  1;
+                        String strKeyRequest = keyRequest+"";
+
+                myRef.child("Patient").child(key).child("Request").child(strKeyRequest).setValue(rq);
+//                myRef.child("Request").child("01").setValue(rq);
+                //ảnh 1
+                if (image1Invalid == 1) {
+                    StorageReference mountainsRef = storageRef.child("01").child("anh1.jpg");
+                    Img1.setDrawingCacheEnabled(true);
+                    Img1.buildDrawingCache();
+                    Bitmap bitmap = ((BitmapDrawable) Img1.getDrawable()).getBitmap();
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                    byte[] data = baos.toByteArray();
+
+                    UploadTask uploadTask = mountainsRef.putBytes(data);
+                    uploadTask.addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            // Handle unsuccessful uploads
+                            Toast.makeText(Review.this, "Save That bai", Toast.LENGTH_LONG).show();
+
+                        }
+                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+                            // ...
+                            Toast.makeText(Review.this, "25%", Toast.LENGTH_LONG).show();
+
+                            storageRef.child("01").child("anh1.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    // Got the download URL for 'users/me/profile.png'
+                                    myRef.child("Request").child("01").child("linkImage1").setValue(uri.toString());
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception exception) {
+                                    // Handle any errors
+                                    Toast.makeText(Review.this, "That bai", Toast.LENGTH_LONG).show();
+                                    Log.d("<<<", "hu hu");
+                                }
+                            });
+
+                        }
+                    });
+                }
+                //ảnh 2
+                if (image2Invalid == 1) {
+                    StorageReference mountainsRef2 = storageRef.child("01").child("anh2.jpg");
+                    Img2.setDrawingCacheEnabled(true);
+                    Img2.buildDrawingCache();
+                    Bitmap bitmap2 = ((BitmapDrawable) Img2.getDrawable()).getBitmap();
+                    ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
+                    bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, baos2);
+                    byte[] data2 = baos2.toByteArray();
+
+                    UploadTask uploadTask2 = mountainsRef2.putBytes(data2);
+                    uploadTask2.addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            // Handle unsuccessful uploads
+                            Toast.makeText(Review.this, "Save That bai", Toast.LENGTH_LONG).show();
+
+                        }
+                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+                            // ...
+                            Toast.makeText(Review.this, "50%", Toast.LENGTH_LONG).show();
+
+                            storageRef.child("01").child("anh2.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    // Got the download URL for 'users/me/profile.png'
+                                    myRef.child("Request").child("01").child("linkImage2").setValue(uri.toString());
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception exception) {
+                                    // Handle any errors
+                                    Toast.makeText(Review.this, "That bai", Toast.LENGTH_LONG).show();
+                                    Log.d("<<<", "hu hu");
+                                }
+                            });
+
+                        }
+                    });
+                }
+                //ảnh 3
+                if (image3Invalid == 1) {
+                    StorageReference mountainsRef3 = storageRef.child("01").child("anh3.jpg");
+                    Img3.setDrawingCacheEnabled(true);
+                    Img3.buildDrawingCache();
+                    Bitmap bitmap3 = ((BitmapDrawable) Img3.getDrawable()).getBitmap();
+                    ByteArrayOutputStream baos3 = new ByteArrayOutputStream();
+                    bitmap3.compress(Bitmap.CompressFormat.JPEG, 100, baos3);
+                    byte[] data3 = baos3.toByteArray();
+
+                    UploadTask uploadTask3 = mountainsRef3.putBytes(data3);
+                    uploadTask3.addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            // Handle unsuccessful uploads
+                            Toast.makeText(Review.this, "Save That bai", Toast.LENGTH_LONG).show();
+
+                        }
+                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+                            // ...
+                            Toast.makeText(Review.this, "75%", Toast.LENGTH_LONG).show();
+
+                            storageRef.child("01").child("anh3.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    // Got the download URL for 'users/me/profile.png'
+                                    myRef.child("Request").child("01").child("linkImage3").setValue(uri.toString());
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception exception) {
+                                    // Handle any errors
+                                    Toast.makeText(Review.this, "That bai", Toast.LENGTH_LONG).show();
+                                    Log.d("<<<", "hu hu");
+                                }
+                            });
+
+                        }
+                    });
+                }
+                //ảnh 4
+                if (image1Invalid == 1) {
+                    StorageReference mountainsRef4 = storageRef.child("01").child("anh4.jpg");
+                    Img4.setDrawingCacheEnabled(true);
+                    Img4.buildDrawingCache();
+                    Bitmap bitmap4 = ((BitmapDrawable) Img4.getDrawable()).getBitmap();
+                    ByteArrayOutputStream baos4 = new ByteArrayOutputStream();
+                    bitmap4.compress(Bitmap.CompressFormat.JPEG, 100, baos4);
+                    byte[] data4 = baos4.toByteArray();
+
+                    UploadTask uploadTask4 = mountainsRef4.putBytes(data4);
+                    uploadTask4.addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception exception) {
+                            // Handle unsuccessful uploads
+                            Toast.makeText(Review.this, "Save That bai", Toast.LENGTH_LONG).show();
+
+                        }
+                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+                            // ...
+                            Toast.makeText(Review.this, "100%", Toast.LENGTH_LONG).show();
+
+                            storageRef.child("01").child("anh4.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    // Got the download URL for 'users/me/profile.png'
+                                    myRef.child("Request").child("01").child("linkImage4").setValue(uri.toString());
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception exception) {
+                                    // Handle any errors
+                                    Toast.makeText(Review.this, "That bai", Toast.LENGTH_LONG).show();
+                                    Log.d("<<<", "hu hu");
+                                }
+                            });
+
+                        }
+                    });
+
+
+                }
+                Intent it = new Intent(Review.this, Option.class);
                 startActivity(it);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
             }
         });
         //code
@@ -86,6 +310,7 @@ public class Review extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent  = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent,1);
+
             }
         });
         Img2.setOnClickListener(new View.OnClickListener() {
@@ -112,6 +337,8 @@ public class Review extends AppCompatActivity {
         //region
         Cursor itemName = databasel.GetData("SELECT * FROM TabelName WHERE Id = 1");
         while (itemName.moveToNext()){
+            rq.Name = itemName.getString(1);
+            rq.Region = itemName.getString(2);
             txtRegion.setText(itemName.getString(2));
         }
         //Get id
@@ -120,24 +347,29 @@ public class Review extends AppCompatActivity {
         while (itemimage1.moveToNext()){
             String Image1 = itemimage1.getString(1);
             Img1.setImageBitmap(StringToBitMap(Image1));
+            image1Invalid = 1;
         }
         //get image 2
         Cursor itemimage2 = databasel.GetData("SELECT * FROM TabelImage2 WHERE Id = 1");
         while (itemimage2.moveToNext()){
             String Image2 = itemimage2.getString(1);
             Img2.setImageBitmap(StringToBitMap(Image2));
+            image2Invalid = 1;
         }
         //get image 3
         Cursor itemimage3 = databasel.GetData("SELECT * FROM TabelImage3 WHERE Id = 1");
         while (itemimage3.moveToNext()){
             String Image3 = itemimage3.getString(1);
             Img3.setImageBitmap(StringToBitMap(Image3));
+            image3Invalid = 1;
+
         }
         //get image 4
         Cursor itemimage4 = databasel.GetData("SELECT * FROM TabelImage4 WHERE Id = 1");
         while (itemimage4.moveToNext()){
             String Image4 = itemimage4.getString(1);
             Img4.setImageBitmap(StringToBitMap(Image4));
+            image4Invalid = 1;
         }
         //question
         Cursor itemQuestioin = databasel.GetData("SELECT * FROM TabelQuestion WHERE Id = 1");
@@ -168,6 +400,21 @@ public class Review extends AppCompatActivity {
                 cbQuestion10.setChecked(true);
             if(itemQuestioin.getString(15).equals("1"))
                 cbQuestion11.setChecked(true);
+            rq.Question1 = itemQuestioin.getString(1);
+            rq.Question2 = itemQuestioin.getString(2);
+            rq.Question3 = itemQuestioin.getString(3);
+            rq.Question4 = itemQuestioin.getString(4);
+            rq.Question5 = itemQuestioin.getString(5);
+            rq.Question6 = itemQuestioin.getString(6);
+            rq.Question7 = itemQuestioin.getString(7);
+            rq.Question8 = itemQuestioin.getString(8);
+            rq.Question9 = itemQuestioin.getString(9);
+            rq.Question10 = itemQuestioin.getString(10);
+            rq.Question11 = itemQuestioin.getString(11);
+            rq.Question12 = itemQuestioin.getString(12);
+            rq.Question13 = itemQuestioin.getString(13);
+            rq.Question14 = itemQuestioin.getString(14);
+            rq.Question15 = itemQuestioin.getString(15);
         }
 
 
@@ -176,9 +423,11 @@ public class Review extends AppCompatActivity {
 
         if(requestCode==1&&resultCode==RESULT_OK&&data!=null)
         {
+
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             Img1.setImageBitmap(bitmap);
             String UrlImage = BitMapToString(bitmap);
+            image1Invalid = 1;
             databasel.QueryData("UPDATE TabelImage1 SET Image ='"+ UrlImage +"' WHERE Id = 1");
         }
         if(requestCode==2&&resultCode==RESULT_OK&&data!=null)
@@ -186,21 +435,24 @@ public class Review extends AppCompatActivity {
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             Img2.setImageBitmap(bitmap);
             String UrlImage2 = BitMapToString(bitmap);
-            databasel.QueryData("UPDATE TabelImage1 SET Image ='"+ UrlImage2 +"' WHERE Id = 1");
+            image2Invalid = 1;
+            databasel.QueryData("UPDATE TabelImage2 SET Image ='"+ UrlImage2 +"' WHERE Id = 1");
         }
         if(requestCode==3&&resultCode==RESULT_OK&&data!=null)
         {
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             Img3.setImageBitmap(bitmap);
             String UrlImage3 = BitMapToString(bitmap);
-            databasel.QueryData("UPDATE TabelImage1 SET Image ='"+ UrlImage3 +"' WHERE Id = 1");
+            image3Invalid = 1;
+            databasel.QueryData("UPDATE TabelImage3 SET Image ='"+ UrlImage3 +"' WHERE Id = 1");
         }
         if(requestCode==4&&resultCode==RESULT_OK&&data!=null)
         {
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             Img4.setImageBitmap(bitmap);
             String UrlImage4 = BitMapToString(bitmap);
-            databasel.QueryData("UPDATE TabelImage1 SET Image ='"+ UrlImage4 +"' WHERE Id = 1");
+            image4Invalid = 1;
+            databasel.QueryData("UPDATE TabelImage4 SET Image ='"+ UrlImage4 +"' WHERE Id = 1");
         }
 
 

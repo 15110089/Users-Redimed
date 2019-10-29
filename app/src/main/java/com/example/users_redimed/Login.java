@@ -49,36 +49,82 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                myRef.child("User").addValueEventListener(new ValueEventListener() {
+                String[] keys = txtEmail.getText().toString().split("@");
+                String key = keys[0];
+                myRef.child("Patient").child(key).child("Profile").addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot node : dataSnapshot.getChildren()) {
-                            User u = node.getValue(User.class);
-                            if(u.Email.equals(txtEmail.getText().toString())&&u.Pass.equals(txtPass.getText().toString())){
-                                Intent it  =new Intent(Login.this,Option.class);
-
-                                //create table
-                                databasel.QueryData("CREATE TABLE IF NOT EXISTS TabelUser(Id INTEGER PRIMARY KEY, Email VARCHAR(200))");
-                                Cursor itemTests = databasel.GetData("SELECT * FROM TabelUser");
-                                while (itemTests.moveToNext()){
-                                    databasel.QueryData("UPDATE TabelUser SET Email ='"+ u.Email +"' WHERE Id = 1");
-                                    it.putExtra("CI",countItem);
+                    public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
+                        User u = dataSnapshot.getValue(User.class);
+                        try
+                        {
+                            String passWord = u.Pass;
+                            if(passWord.equals(""))
+                            { }
+                            else
+                            {
+                                if(txtPass.getText().toString().equals(passWord))
+                                {
+                                    Intent it  =new Intent(Login.this,Option.class);
+                                    //create table
+                                    databasel.QueryData("CREATE TABLE IF NOT EXISTS TabelUser(Id INTEGER PRIMARY KEY, Email VARCHAR(200))");
+                                    Cursor itemTests = databasel.GetData("SELECT * FROM TabelUser");
+                                    while (itemTests.moveToNext()){
+                                        databasel.QueryData("UPDATE TabelUser SET Email ='"+ u.Email +"' WHERE Id = 1");
+                                        it.putExtra("CI",countItem);
                                         startActivity(it);
+                                        return;
+                                    }
+                                    databasel.QueryData("INSERT INTO TabelUser VALUES(1,'"+u.Email+"')");
+                                    it.putExtra("CI",countItem);
+                                    startActivity(it);
                                     return;
                                 }
-                                databasel.QueryData("INSERT INTO TabelUser VALUES(1,'"+u.Email+"')");
-                                it.putExtra("CI",countItem);
-                                startActivity(it);
-                                return;
-
+                                else
+                                {
+                                    Toast.makeText(Login.this, "Email hoặc Password không đúng", Toast.LENGTH_LONG).show();
+                                }
                             }
                         }
-                        Toast.makeText(Login.this, "Email hoặc Password không đúng", Toast.LENGTH_LONG).show();
+                        catch(Exception e)
+                        {
+                            Toast.makeText(Login.this, "Email hoặc Password không đúng", Toast.LENGTH_LONG).show();
+                        }
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
                     }
                 });
+//                myRef.child("Patient").child(key).child("Profile").addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        for (DataSnapshot node : dataSnapshot.getChildren()) {
+//                            User u = node.getValue(User.class);
+//                            if(u.Email.equals(txtEmail.getText().toString())&&u.Pass.equals(txtPass.getText().toString())){
+//                                Intent it  =new Intent(Login.this,Option.class);
+//
+//                                //create table
+//                                databasel.QueryData("CREATE TABLE IF NOT EXISTS TabelUser(Id INTEGER PRIMARY KEY, Email VARCHAR(200))");
+//                                Cursor itemTests = databasel.GetData("SELECT * FROM TabelUser");
+//                                while (itemTests.moveToNext()){
+//                                    databasel.QueryData("UPDATE TabelUser SET Email ='"+ u.Email +"' WHERE Id = 1");
+//                                    it.putExtra("CI",countItem);
+//                                        startActivity(it);
+//                                    return;
+//                                }
+//                                databasel.QueryData("INSERT INTO TabelUser VALUES(1,'"+u.Email+"')");
+//                                it.putExtra("CI",countItem);
+//                                startActivity(it);
+//                                return;
+//
+//                            }
+//                        }
+//                        Toast.makeText(Login.this, "Email hoặc Password không đúng", Toast.LENGTH_LONG).show();
+//                    }
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//                        Toast.makeText(Login.this, "Email hoặc Password không đúng", Toast.LENGTH_LONG).show();
+//                    }
+//                });
 
 
             }
