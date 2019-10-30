@@ -13,6 +13,7 @@ import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.users_redimed.Model.NewRequest;
@@ -34,6 +35,7 @@ public class TrackWaiting extends AppCompatActivity {
 
     ImageView Img1;
     EditText txtQuestion1;
+    TextView txtFeedback;
     EditText txtRegion;
     EditText txtQuestion2;
     EditText txtQuestion3;
@@ -66,6 +68,7 @@ public class TrackWaiting extends AppCompatActivity {
         //ánh xạ
         Img1 = (ImageView) findViewById(R.id.idImg1);
         txtRegion = (EditText) findViewById(R.id.txtRegion);
+        txtFeedback = (TextView) findViewById(R.id.txtFeedback);
         txtQuestion1 = (EditText) findViewById(R.id.txtQuestion1);
         txtQuestion2 = (EditText) findViewById(R.id.txtQuestion2);
         txtQuestion3 = (EditText) findViewById(R.id.txtQuestion3);
@@ -122,6 +125,15 @@ public class TrackWaiting extends AppCompatActivity {
                 txtQuestion4.setText(rq.Question4);
                 txtRegion.setText(rq.Region);
                 Picasso.get().load(rq.LinkImage1).into(Img1);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+        myRef.child("Patient").child(key).child("Request").child(keyRequest).child("Feedback").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
+                    txtFeedback.setText(dataSnapshot.getValue(String.class));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
