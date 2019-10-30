@@ -22,13 +22,18 @@ public class Request {
     public String LinkImage2;
     public String LinkImage3;
     public String LinkImage4;
+    public String State;
     public Request() {
     }
-    public Request(String name, String region, String question1, String question2,
-                   String question3, String question4, String question5, String question6,
-                   String question7, String question8, String question9, String question10,
-                   String question11, String question12, String question13, String question14,
-                   String question15, String linkImage1, String linkImage2, String linkImage3, String linkImage4) {
+
+    public Request(String name, String region, String question1,
+                   String question2, String question3, String question4,
+                   String question5, String question6, String question7,
+                   String question8, String question9, String question10,
+                   String question11, String question12, String question13,
+                   String question14, String question15, String linkImage1,
+                   String linkImage2, String linkImage3, String linkImage4,
+                   String state) {
         Name = name;
         Region = region;
         Question1 = question1;
@@ -50,5 +55,6 @@ public class Request {
         LinkImage2 = linkImage2;
         LinkImage3 = linkImage3;
         LinkImage4 = linkImage4;
+        State = state;
     }
 }

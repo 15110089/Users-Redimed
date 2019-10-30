@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.users_redimed.Model.NewRequest;
 import com.example.users_redimed.Model.Request;
 import com.example.users_redimed.Model.User;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -40,9 +41,6 @@ import java.io.ByteArrayOutputStream;
 public class Review extends AppCompatActivity {
 
     ImageView Img1;
-    ImageView Img2;
-    ImageView Img3;
-    ImageView Img4;
     EditText txtQuestion1;
     EditText txtRegion;
     EditText txtQuestion2;
@@ -60,6 +58,7 @@ public class Review extends AppCompatActivity {
     CheckBox cbQuestion10;
     CheckBox cbQuestion11;
     String key;
+    String strKeyRequest;
     int image1Invalid = 0;
     int image2Invalid = 0;
     int image3Invalid = 0;
@@ -86,9 +85,7 @@ public class Review extends AppCompatActivity {
         //ánh xạ
         btSend = (Button) findViewById(R.id.btSendId);
         Img1 = (ImageView) findViewById(R.id.idImg1);
-        Img2 = (ImageView) findViewById(R.id.idImg2);
-        Img3 = (ImageView) findViewById(R.id.idImg3);
-        Img4 = (ImageView) findViewById(R.id.idImg4);
+
         txtRegion = (EditText) findViewById(R.id.txtRegion);
         txtQuestion1 = (EditText) findViewById(R.id.txtQuestion1);
         txtQuestion2 = (EditText) findViewById(R.id.txtQuestion2);
@@ -117,13 +114,78 @@ public class Review extends AppCompatActivity {
                     public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
                         long keyRequest =  dataSnapshot.getChildrenCount();
                         keyRequest = keyRequest +  1;
-                        String strKeyRequest = keyRequest+"";
+                        strKeyRequest = keyRequest+"";
+                         rq.State = "1";
+                        rq.Question1 = txtQuestion1.getText().toString();
+                        rq.Question2 = txtQuestion2.getText().toString();
+                        rq.Question3 = txtQuestion3.getText().toString();
+                        rq.Question4 = txtQuestion4.getText().toString();
+                        if(cbQuestion1.isChecked()){
+                            rq.Question5 = "1";
+                        }else{
+                            rq.Question5 = "0";
+                        }
+                        if(cbQuestion2.isChecked()){
+                            rq.Question6 = "1";
+                        }else{
+                            rq.Question6 = "0";
+                        }
+                        if(cbQuestion3.isChecked()){
+                            rq.Question7 = "1";
+                        }else{
+                            rq.Question7 = "0";
+                        }
+                        if(cbQuestion4.isChecked()){
+                            rq.Question8 = "1";
+                        }else{
+                            rq.Question8 = "0";
+                        }
+                        if(cbQuestion5.isChecked()){
+                            rq.Question9 = "1";
+                        }else{
+                            rq.Question9 = "0";
+                        }
+                        if(cbQuestion6.isChecked()){
+                            rq.Question10 = "1";
+                        }else{
+                            rq.Question10 = "0";
+                        }
+                        if(cbQuestion7.isChecked()){
+                            rq.Question11 = "1";
+                        }else{
+                            rq.Question11 = "0";
+                        }
+                        if(cbQuestion8.isChecked()){
+                            rq.Question12 = "1";
+                        }else{
+                            rq.Question12 = "0";
+                        }
+                        if(cbQuestion9.isChecked()){
+                            rq.Question13 = "1";
+                        }else{
+                            rq.Question13 = "0";
+                        }
+                        if(cbQuestion10.isChecked()){
+                            rq.Question14 = "1";
+                        }else{
+                            rq.Question14 = "0";
+                        }
+                        if(cbQuestion11.isChecked()){
+                            rq.Question15 = "1";
+                        }else{
+                            rq.Question15 = "0";
+                        }
 
                 myRef.child("Patient").child(key).child("Request").child(strKeyRequest).setValue(rq);
+                        NewRequest newRequest = new NewRequest();
+                        newRequest.User = key;
+                        newRequest.Key = strKeyRequest;
+                myRef.child("NewRequest").push().setValue(newRequest);
+
 //                myRef.child("Request").child("01").setValue(rq);
                 //ảnh 1
                 if (image1Invalid == 1) {
-                    StorageReference mountainsRef = storageRef.child("01").child("anh1.jpg");
+                    StorageReference mountainsRef = storageRef.child("Patient").child(key).child(strKeyRequest).child("Image.jpg");
                     Img1.setDrawingCacheEnabled(true);
                     Img1.buildDrawingCache();
                     Bitmap bitmap = ((BitmapDrawable) Img1.getDrawable()).getBitmap();
@@ -144,13 +206,15 @@ public class Review extends AppCompatActivity {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
                             // ...
-                            Toast.makeText(Review.this, "25%", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Review.this, "Request has been sent", Toast.LENGTH_LONG).show();
+                            Intent it = new Intent(Review.this, Option.class);
+                            startActivity(it);
 
-                            storageRef.child("01").child("anh1.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            storageRef.child("Patient").child(key).child(strKeyRequest).child("Image.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     // Got the download URL for 'users/me/profile.png'
-                                    myRef.child("Request").child("01").child("linkImage1").setValue(uri.toString());
+                                    myRef.child("Patient").child(key).child("Request").child(strKeyRequest).child("LinkImage1").setValue(uri.toString());
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -164,139 +228,141 @@ public class Review extends AppCompatActivity {
                         }
                     });
                 }
-                //ảnh 2
-                if (image2Invalid == 1) {
-                    StorageReference mountainsRef2 = storageRef.child("01").child("anh2.jpg");
-                    Img2.setDrawingCacheEnabled(true);
-                    Img2.buildDrawingCache();
-                    Bitmap bitmap2 = ((BitmapDrawable) Img2.getDrawable()).getBitmap();
-                    ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
-                    bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, baos2);
-                    byte[] data2 = baos2.toByteArray();
-
-                    UploadTask uploadTask2 = mountainsRef2.putBytes(data2);
-                    uploadTask2.addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception exception) {
-                            // Handle unsuccessful uploads
-                            Toast.makeText(Review.this, "Save That bai", Toast.LENGTH_LONG).show();
-
-                        }
-                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
-                            // ...
-                            Toast.makeText(Review.this, "50%", Toast.LENGTH_LONG).show();
-
-                            storageRef.child("01").child("anh2.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-                                    // Got the download URL for 'users/me/profile.png'
-                                    myRef.child("Request").child("01").child("linkImage2").setValue(uri.toString());
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception exception) {
-                                    // Handle any errors
-                                    Toast.makeText(Review.this, "That bai", Toast.LENGTH_LONG).show();
-                                    Log.d("<<<", "hu hu");
-                                }
-                            });
-
-                        }
-                    });
+                else{
+                    Toast.makeText(Review.this, "Image not yet", Toast.LENGTH_LONG).show();
                 }
-                //ảnh 3
-                if (image3Invalid == 1) {
-                    StorageReference mountainsRef3 = storageRef.child("01").child("anh3.jpg");
-                    Img3.setDrawingCacheEnabled(true);
-                    Img3.buildDrawingCache();
-                    Bitmap bitmap3 = ((BitmapDrawable) Img3.getDrawable()).getBitmap();
-                    ByteArrayOutputStream baos3 = new ByteArrayOutputStream();
-                    bitmap3.compress(Bitmap.CompressFormat.JPEG, 100, baos3);
-                    byte[] data3 = baos3.toByteArray();
+//                //ảnh 2
+//                if (image2Invalid == 1) {
+//                    StorageReference mountainsRef2 = storageRef.child("01").child("anh2.jpg");
+//                    Img2.setDrawingCacheEnabled(true);
+//                    Img2.buildDrawingCache();
+//                    Bitmap bitmap2 = ((BitmapDrawable) Img2.getDrawable()).getBitmap();
+//                    ByteArrayOutputStream baos2 = new ByteArrayOutputStream();
+//                    bitmap2.compress(Bitmap.CompressFormat.JPEG, 100, baos2);
+//                    byte[] data2 = baos2.toByteArray();
+//
+//                    UploadTask uploadTask2 = mountainsRef2.putBytes(data2);
+//                    uploadTask2.addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception exception) {
+//                            // Handle unsuccessful uploads
+//                            Toast.makeText(Review.this, "Save That bai", Toast.LENGTH_LONG).show();
+//
+//                        }
+//                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                        @Override
+//                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                            // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+//                            // ...
+//                            Toast.makeText(Review.this, "50%", Toast.LENGTH_LONG).show();
+//
+//                            storageRef.child("01").child("anh2.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                                @Override
+//                                public void onSuccess(Uri uri) {
+//                                    // Got the download URL for 'users/me/profile.png'
+//                                    myRef.child("Request").child("01").child("linkImage2").setValue(uri.toString());
+//                                }
+//                            }).addOnFailureListener(new OnFailureListener() {
+//                                @Override
+//                                public void onFailure(@NonNull Exception exception) {
+//                                    // Handle any errors
+//                                    Toast.makeText(Review.this, "That bai", Toast.LENGTH_LONG).show();
+//                                    Log.d("<<<", "hu hu");
+//                                }
+//                            });
+//
+//                        }
+//                    });
+//                }
+//                //ảnh 3
+//                if (image3Invalid == 1) {
+//                    StorageReference mountainsRef3 = storageRef.child("01").child("anh3.jpg");
+//                    Img3.setDrawingCacheEnabled(true);
+//                    Img3.buildDrawingCache();
+//                    Bitmap bitmap3 = ((BitmapDrawable) Img3.getDrawable()).getBitmap();
+//                    ByteArrayOutputStream baos3 = new ByteArrayOutputStream();
+//                    bitmap3.compress(Bitmap.CompressFormat.JPEG, 100, baos3);
+//                    byte[] data3 = baos3.toByteArray();
+//
+//                    UploadTask uploadTask3 = mountainsRef3.putBytes(data3);
+//                    uploadTask3.addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception exception) {
+//                            // Handle unsuccessful uploads
+//                            Toast.makeText(Review.this, "Save That bai", Toast.LENGTH_LONG).show();
+//
+//                        }
+//                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                        @Override
+//                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                            // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+//                            // ...
+//                            Toast.makeText(Review.this, "75%", Toast.LENGTH_LONG).show();
+//
+//                            storageRef.child("01").child("anh3.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                                @Override
+//                                public void onSuccess(Uri uri) {
+//                                    // Got the download URL for 'users/me/profile.png'
+//                                    myRef.child("Request").child("01").child("linkImage3").setValue(uri.toString());
+//                                }
+//                            }).addOnFailureListener(new OnFailureListener() {
+//                                @Override
+//                                public void onFailure(@NonNull Exception exception) {
+//                                    // Handle any errors
+//                                    Toast.makeText(Review.this, "That bai", Toast.LENGTH_LONG).show();
+//                                    Log.d("<<<", "hu hu");
+//                                }
+//                            });
+//
+//                        }
+//                    });
+//                }
+//                //ảnh 4
+//                if (image1Invalid == 1) {
+//                    StorageReference mountainsRef4 = storageRef.child("01").child("anh4.jpg");
+//                    Img4.setDrawingCacheEnabled(true);
+//                    Img4.buildDrawingCache();
+//                    Bitmap bitmap4 = ((BitmapDrawable) Img4.getDrawable()).getBitmap();
+//                    ByteArrayOutputStream baos4 = new ByteArrayOutputStream();
+//                    bitmap4.compress(Bitmap.CompressFormat.JPEG, 100, baos4);
+//                    byte[] data4 = baos4.toByteArray();
+//
+//                    UploadTask uploadTask4 = mountainsRef4.putBytes(data4);
+//                    uploadTask4.addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception exception) {
+//                            // Handle unsuccessful uploads
+//                            Toast.makeText(Review.this, "Save That bai", Toast.LENGTH_LONG).show();
+//
+//                        }
+//                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                        @Override
+//                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                            // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+//                            // ...
+//                            Toast.makeText(Review.this, "100%", Toast.LENGTH_LONG).show();
+//
+//                            storageRef.child("01").child("anh4.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                                @Override
+//                                public void onSuccess(Uri uri) {
+//                                    // Got the download URL for 'users/me/profile.png'
+//                                    myRef.child("Request").child("01").child("linkImage4").setValue(uri.toString());
+//                                }
+//                            }).addOnFailureListener(new OnFailureListener() {
+//                                @Override
+//                                public void onFailure(@NonNull Exception exception) {
+//                                    // Handle any errors
+//                                    Toast.makeText(Review.this, "That bai", Toast.LENGTH_LONG).show();
+//                                    Log.d("<<<", "hu hu");
+//                                }
+//                            });
+//
+//                        }
+//                    });
+//
+//
+//                }
 
-                    UploadTask uploadTask3 = mountainsRef3.putBytes(data3);
-                    uploadTask3.addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception exception) {
-                            // Handle unsuccessful uploads
-                            Toast.makeText(Review.this, "Save That bai", Toast.LENGTH_LONG).show();
-
-                        }
-                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
-                            // ...
-                            Toast.makeText(Review.this, "75%", Toast.LENGTH_LONG).show();
-
-                            storageRef.child("01").child("anh3.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-                                    // Got the download URL for 'users/me/profile.png'
-                                    myRef.child("Request").child("01").child("linkImage3").setValue(uri.toString());
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception exception) {
-                                    // Handle any errors
-                                    Toast.makeText(Review.this, "That bai", Toast.LENGTH_LONG).show();
-                                    Log.d("<<<", "hu hu");
-                                }
-                            });
-
-                        }
-                    });
-                }
-                //ảnh 4
-                if (image1Invalid == 1) {
-                    StorageReference mountainsRef4 = storageRef.child("01").child("anh4.jpg");
-                    Img4.setDrawingCacheEnabled(true);
-                    Img4.buildDrawingCache();
-                    Bitmap bitmap4 = ((BitmapDrawable) Img4.getDrawable()).getBitmap();
-                    ByteArrayOutputStream baos4 = new ByteArrayOutputStream();
-                    bitmap4.compress(Bitmap.CompressFormat.JPEG, 100, baos4);
-                    byte[] data4 = baos4.toByteArray();
-
-                    UploadTask uploadTask4 = mountainsRef4.putBytes(data4);
-                    uploadTask4.addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception exception) {
-                            // Handle unsuccessful uploads
-                            Toast.makeText(Review.this, "Save That bai", Toast.LENGTH_LONG).show();
-
-                        }
-                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
-                            // ...
-                            Toast.makeText(Review.this, "100%", Toast.LENGTH_LONG).show();
-
-                            storageRef.child("01").child("anh4.jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-                                    // Got the download URL for 'users/me/profile.png'
-                                    myRef.child("Request").child("01").child("linkImage4").setValue(uri.toString());
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception exception) {
-                                    // Handle any errors
-                                    Toast.makeText(Review.this, "That bai", Toast.LENGTH_LONG).show();
-                                    Log.d("<<<", "hu hu");
-                                }
-                            });
-
-                        }
-                    });
-
-
-                }
-                Intent it = new Intent(Review.this, Option.class);
-                startActivity(it);
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -313,27 +379,7 @@ public class Review extends AppCompatActivity {
 
             }
         });
-        Img2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent  = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent,2);
-            }
-        });
-        Img3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent  = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent,3);
-            }
-        });
-        Img4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent  = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent,4);
-            }
-        });
+
         //region
         Cursor itemName = databasel.GetData("SELECT * FROM TabelName WHERE Id = 1");
         while (itemName.moveToNext()){
@@ -346,31 +392,10 @@ public class Review extends AppCompatActivity {
         Cursor itemimage1 = databasel.GetData("SELECT * FROM TabelImage1 WHERE Id = 1");
         while (itemimage1.moveToNext()){
             String Image1 = itemimage1.getString(1);
-            Img1.setImageBitmap(StringToBitMap(Image1));
             image1Invalid = 1;
+            Img1.setImageBitmap(StringToBitMap(Image1));
         }
-        //get image 2
-        Cursor itemimage2 = databasel.GetData("SELECT * FROM TabelImage2 WHERE Id = 1");
-        while (itemimage2.moveToNext()){
-            String Image2 = itemimage2.getString(1);
-            Img2.setImageBitmap(StringToBitMap(Image2));
-            image2Invalid = 1;
-        }
-        //get image 3
-        Cursor itemimage3 = databasel.GetData("SELECT * FROM TabelImage3 WHERE Id = 1");
-        while (itemimage3.moveToNext()){
-            String Image3 = itemimage3.getString(1);
-            Img3.setImageBitmap(StringToBitMap(Image3));
-            image3Invalid = 1;
 
-        }
-        //get image 4
-        Cursor itemimage4 = databasel.GetData("SELECT * FROM TabelImage4 WHERE Id = 1");
-        while (itemimage4.moveToNext()){
-            String Image4 = itemimage4.getString(1);
-            Img4.setImageBitmap(StringToBitMap(Image4));
-            image4Invalid = 1;
-        }
         //question
         Cursor itemQuestioin = databasel.GetData("SELECT * FROM TabelQuestion WHERE Id = 1");
         while (itemQuestioin.moveToNext()){
@@ -430,30 +455,7 @@ public class Review extends AppCompatActivity {
             image1Invalid = 1;
             databasel.QueryData("UPDATE TabelImage1 SET Image ='"+ UrlImage +"' WHERE Id = 1");
         }
-        if(requestCode==2&&resultCode==RESULT_OK&&data!=null)
-        {
-            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-            Img2.setImageBitmap(bitmap);
-            String UrlImage2 = BitMapToString(bitmap);
-            image2Invalid = 1;
-            databasel.QueryData("UPDATE TabelImage2 SET Image ='"+ UrlImage2 +"' WHERE Id = 1");
-        }
-        if(requestCode==3&&resultCode==RESULT_OK&&data!=null)
-        {
-            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-            Img3.setImageBitmap(bitmap);
-            String UrlImage3 = BitMapToString(bitmap);
-            image3Invalid = 1;
-            databasel.QueryData("UPDATE TabelImage3 SET Image ='"+ UrlImage3 +"' WHERE Id = 1");
-        }
-        if(requestCode==4&&resultCode==RESULT_OK&&data!=null)
-        {
-            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-            Img4.setImageBitmap(bitmap);
-            String UrlImage4 = BitMapToString(bitmap);
-            image4Invalid = 1;
-            databasel.QueryData("UPDATE TabelImage4 SET Image ='"+ UrlImage4 +"' WHERE Id = 1");
-        }
+
 
 
         super.onActivityResult(requestCode, resultCode, data);

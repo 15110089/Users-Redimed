@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LichSu2Activity"></activity>
+        <activity android:name=".TrackWaiting"></activity>
+        <activity android:name=".RequestSent" />
+        <activity android:name=".AddRequestAndTrack" />
+        <activity android:name=".LichSu2Activity" />
         <activity android:name=".LichSu1Activity" />
         <activity android:name=".Review" />
         <activity android:name=".SignUpStep5" />

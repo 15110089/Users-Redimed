@@ -10,5 +10,8 @@
     <color name="white">#FFFFFF</color>
     <color name="signupColor">#066e8a</color>
 
-
+<!--1 - vừa xong-->
+<!--2 - đã nhận-->
+<!--3 - đã phản hồi-->
+<!--4 - đã xem phản hồi-->
 </resources>

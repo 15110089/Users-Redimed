@@ -33,7 +33,7 @@ public class Option extends AppCompatActivity {
         btRequestAdvice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it  =new Intent(Option.this,AddItem.class);
+                Intent it  =new Intent(Option.this,AddRequestAndTrack.class);
                 it.putExtra("CI",countItem);
                 startActivity(it);
             }

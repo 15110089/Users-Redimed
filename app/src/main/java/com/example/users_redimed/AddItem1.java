@@ -20,9 +20,7 @@ import java.io.ByteArrayOutputStream;
 public class AddItem1 extends AppCompatActivity {
 
     ImageView img1;
-    ImageView img2;
-    ImageView img3;
-    ImageView img4;
+
     Button btNext;
     Database databasel;
     int countItem;
@@ -40,13 +38,9 @@ public class AddItem1 extends AppCompatActivity {
         //Ánh xạ
         databasel = new Database(this,"redimed.sqlite",null,1);
         databasel.QueryData("CREATE TABLE IF NOT EXISTS TabelImage1(Id INTEGER PRIMARY KEY, Image VARCHAR(500))");
-        databasel.QueryData("CREATE TABLE IF NOT EXISTS TabelImage2(Id INTEGER PRIMARY KEY, Image VARCHAR(500))");
-        databasel.QueryData("CREATE TABLE IF NOT EXISTS TabelImage3(Id INTEGER PRIMARY KEY, Image VARCHAR(500))");
-        databasel.QueryData("CREATE TABLE IF NOT EXISTS TabelImage4(Id INTEGER PRIMARY KEY, Image VARCHAR(500))");
+
         img1 = (ImageView) findViewById(R.id.idImg1);
-        img2 = (ImageView) findViewById(R.id.idImg2);
-        img3 = (ImageView) findViewById(R.id.idImg3);
-        img4 = (ImageView) findViewById(R.id.idImg4);
+
         btNext = (Button) findViewById(R.id.idBtNext);
 
         //code
@@ -65,32 +59,10 @@ public class AddItem1 extends AppCompatActivity {
                 startActivityForResult(intent,1);
             }
         });
-        img2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent  = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent,2);
-            }
-        });
-        img3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent  = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent,3);
-            }
-        });
-        img4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent  = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent,4);
-            }
-        });
+
         //restart image
         databasel.QueryData("DELETE FROM TabelImage1 WHERE Id = 1");
-        databasel.QueryData("DELETE FROM TabelImage2 WHERE Id = 1");
-        databasel.QueryData("DELETE FROM TabelImage3 WHERE Id = 1");
-        databasel.QueryData("DELETE FROM TabelImage4 WHERE Id = 1");
+
 
     }
 
@@ -103,27 +75,7 @@ public class AddItem1 extends AppCompatActivity {
             String UrlImage = BitMapToString(bitmap);
             databasel.QueryData("INSERT INTO TabelImage1 VALUES(1,'"+UrlImage+"')");
         }
-        if(requestCode==2&&resultCode==RESULT_OK&&data!=null)
-        {
-            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-            img2.setImageBitmap(bitmap);
-            String UrlImage2 = BitMapToString(bitmap);
-            databasel.QueryData("INSERT INTO TabelImage2 VALUES(1,'"+UrlImage2 +"')");
-        }
-        if(requestCode==3&&resultCode==RESULT_OK&&data!=null)
-        {
-            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-            img3.setImageBitmap(bitmap);
-            String UrlImage3 = BitMapToString(bitmap);
-            databasel.QueryData("INSERT INTO TabelImage3 VALUES(1,'"+UrlImage3 +"')");
-        }
-        if(requestCode==4&&resultCode==RESULT_OK&&data!=null)
-        {
-            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-            img4.setImageBitmap(bitmap);
-            String UrlImage4 = BitMapToString(bitmap);
-            databasel.QueryData("INSERT INTO TabelImage4 VALUES(1,'"+UrlImage4 +"')");
-        }
+
 
 
         super.onActivityResult(requestCode, resultCode, data);
