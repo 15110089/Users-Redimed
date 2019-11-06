@@ -37,6 +37,9 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Review extends AppCompatActivity {
 
@@ -180,7 +183,11 @@ public class Review extends AppCompatActivity {
                         NewRequest newRequest = new NewRequest();
                         newRequest.User = key;
                         newRequest.Key = strKeyRequest;
-                myRef.child("NewRequest").push().setValue(newRequest);
+//                myRef.child("NewRequest").push().setValue(newRequest)
+                Date currentTime = Calendar.getInstance().getTime();
+                        SimpleDateFormat postFormater = new SimpleDateFormat("dd/MM/yyyy");
+                        String newDateStr = postFormater.format(currentTime);
+                        myRef.child("NewRequest").child(key).child(strKeyRequest).setValue(newDateStr);
 
 //                myRef.child("Request").child("01").setValue(rq);
                 //ảnh 1
