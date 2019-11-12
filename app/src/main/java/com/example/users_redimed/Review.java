@@ -23,6 +23,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.users_redimed.Model.NewRequest;
+import com.example.users_redimed.Model.NewRequest_Profile;
+import com.example.users_redimed.Model.NewRequest_Request;
 import com.example.users_redimed.Model.Request;
 import com.example.users_redimed.Model.User;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -68,6 +70,7 @@ public class Review extends AppCompatActivity {
     int image4Invalid = 0;
     Button btSend;
     String user;
+    User userInfor;
     Database databasel;
     Request rq = new Request();
     FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -105,6 +108,19 @@ public class Review extends AppCompatActivity {
         cbQuestion9 = (CheckBox) findViewById(R.id.cbQuestion9);
         cbQuestion10 = (CheckBox) findViewById(R.id.cbQuestion10);
         cbQuestion11 = (CheckBox) findViewById(R.id.cbQuestion11);
+        //user infor
+        String[] keys = user.split("@");
+        key = keys[0];
+        myRef.child("Patient").child(key).child("Profile").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
+
+                userInfor = dataSnapshot.getValue(User.class);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
         //code
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -178,16 +194,20 @@ public class Review extends AppCompatActivity {
                         }else{
                             rq.Question15 = "0";
                         }
-
+                rq.Name = "Lesson " + strKeyRequest;
                 myRef.child("Patient").child(key).child("Request").child(strKeyRequest).setValue(rq);
                         NewRequest newRequest = new NewRequest();
                         newRequest.User = key;
                         newRequest.Key = strKeyRequest;
 //                myRef.child("NewRequest").push().setValue(newRequest)
-                Date currentTime = Calendar.getInstance().getTime();
+
+                        NewRequest_Profile newRequest_Profile = new  NewRequest_Profile(userInfor.Name,userInfor.Birth,userInfor.Phone,userInfor.Gender);
+                        myRef.child("NewRequest").child(key).child("Profile").setValue(newRequest_Profile);
+                        Date currentTime = Calendar.getInstance().getTime();
                         SimpleDateFormat postFormater = new SimpleDateFormat("dd/MM/yyyy");
                         String newDateStr = postFormater.format(currentTime);
-                        myRef.child("NewRequest").child(key).child(strKeyRequest).setValue(newDateStr);
+                        NewRequest_Request newRequest_Request = new NewRequest_Request(rq.Name,newDateStr);
+                        myRef.child("NewRequest").child(key).child("Request").child(strKeyRequest).setValue(newRequest_Request);
 
 //                myRef.child("Request").child("01").setValue(rq);
                 //ảnh 1
@@ -390,9 +410,8 @@ public class Review extends AppCompatActivity {
         //region
         Cursor itemName = databasel.GetData("SELECT * FROM TabelName WHERE Id = 1");
         while (itemName.moveToNext()){
-            rq.Name = itemName.getString(1);
-            rq.Region = itemName.getString(2);
-            txtRegion.setText(itemName.getString(2));
+            rq.Region = itemName.getString(1);
+            txtRegion.setText(itemName.getString(1));
         }
         //Get id
         //get image 1

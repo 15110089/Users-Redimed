@@ -9,18 +9,8 @@
     android:background="@drawable/bg">
 
 
-    <EditText
-        android:id="@+id/txtName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/shapeinput"
-        android:drawablePadding="10dp"
-        android:hint="Item name"
-        android:padding="15dp"
-        android:textColor="#3D3D37"
-        android:textColorHighlight="@color/white"
-        android:textColorHint="#7C7878" />
+
+
     <Spinner
         android:id="@+id/spRegionBodyId"
         android:layout_width="match_parent"

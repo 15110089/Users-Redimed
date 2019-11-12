@@ -33,7 +33,8 @@ public class AddItem extends AppCompatActivity {
         }
         //ánh xạ
         databasel = new Database(this,"redimed.sqlite",null,1);
-        databasel.QueryData("CREATE TABLE IF NOT EXISTS TabelName(Id INTEGER PRIMARY KEY, Name VARCHAR(500), Region VARCHAR(500))");
+        //databasel.QueryData("drop table 'TabelName'");
+        databasel.QueryData("CREATE TABLE IF NOT EXISTS TabelName(Id INTEGER PRIMARY KEY, Region VARCHAR(500))");
         spRegionBody = (Spinner) findViewById(R.id.spRegionBodyId);
         txtName = (EditText) findViewById(R.id.txtName);
         btNextAddItem1 = (Button) findViewById(R.id.btAddItem1Id);
@@ -50,7 +51,7 @@ public class AddItem extends AppCompatActivity {
         btNextAddItem1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databasel.QueryData("INSERT INTO TabelName VALUES(1,'"+txtName.getText().toString()+"','"+spRegionBody.getSelectedItem().toString()+"')");
+                databasel.QueryData("INSERT INTO TabelName VALUES(1,'"+spRegionBody.getSelectedItem().toString()+"')");
                 Intent it  =new Intent(AddItem.this,AddItem1.class);
                 it.putExtra("CI",countItem);
                 startActivity(it);
