@@ -133,7 +133,12 @@ public class TrackWaiting extends AppCompatActivity {
         myRef.child("Patient").child(key).child("Request").child(keyRequest).child("Feedback").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
-                txtFeedBack.setText(dataSnapshot.getValue(String.class));
+                if(dataSnapshot.getValue(String.class)!=null){
+                    txtFeedBack.setText("Feedback: " + dataSnapshot.getValue(String.class));
+                }else{
+                    txtFeedBack.setText("Feedback: Waiting...");
+                }
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

@@ -23,6 +23,7 @@ public class Request {
     public String LinkImage3;
     public String LinkImage4;
     public String State;
+    public String Feedback;
     public Request() {
     }
 
@@ -33,7 +34,7 @@ public class Request {
                    String question11, String question12, String question13,
                    String question14, String question15, String linkImage1,
                    String linkImage2, String linkImage3, String linkImage4,
-                   String state) {
+                   String state,String feedback) {
         Name = name;
         Region = region;
         Question1 = question1;
@@ -56,5 +57,6 @@ public class Request {
         LinkImage3 = linkImage3;
         LinkImage4 = linkImage4;
         State = state;
+        Feedback = feedback;
     }
 }

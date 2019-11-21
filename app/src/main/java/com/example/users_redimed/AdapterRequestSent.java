@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -40,12 +41,17 @@ public class AdapterRequestSent extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(layout,null);
-
         TextView txtName =(TextView) convertView.findViewById(R.id.txtName);
+        LinearLayout lnItem =(LinearLayout) convertView.findViewById(R.id.lnItem);
         TextView txtSTT =(TextView) convertView.findViewById(R.id.txtSTT);
         ItemRequestSent item = listItems.get(position);
         txtName.setText(item.Name);
         txtSTT.setText(item.STT);
+        if(item.FB==1){
+            lnItem.setBackgroundResource(R.drawable.shapebutton);
+        }else{
+            lnItem.setBackgroundResource(R.drawable.shapebuttonlur);
+        }
         return convertView;
     }
 

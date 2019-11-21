@@ -56,7 +56,10 @@ public class RequestSent extends AppCompatActivity {
                     if(request.State.equals("4")){
                     }
                     else{
-                        ItemRequestSent item = new ItemRequestSent(request.Name,node.getKey());
+                        int fb = 1;
+                        if(request.Feedback==null)
+                            fb = 0;
+                        ItemRequestSent item = new ItemRequestSent(request.Name,node.getKey(),fb);
                         arlRequestSent.add(item);
                         arlKeyRequest.add(node.getKey());
                     }
