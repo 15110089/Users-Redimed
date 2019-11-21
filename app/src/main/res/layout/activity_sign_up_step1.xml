@@ -7,97 +7,97 @@
 
     <ImageView
         android:id="@+id/imageView"
-      android:layout_width="fill_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
         android:src="@drawable/logom" />
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:paddingTop="15dp"
-    android:background="@drawable/bg">
-
-
-
-    <EditText
-        android:id="@+id/txtName"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:drawableLeft="@drawable/name_icon"
-        android:background="@drawable/shapeinput"
-        android:drawablePadding="10dp"
-        android:hint="Name"
-        android:padding="10dp"
-        android:textColor="#3D3D37"
-        android:textColorHighlight="@color/white"
-        android:textColorHint="#7C7878" />
-    <Spinner
-        android:id="@+id/txtGender"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:drawableLeft="@drawable/gender_icon"
-        android:background="@drawable/shapeinput"
-        android:drawablePadding="10dp"
-        android:hint="Gender"
-        android:padding="10dp"
-        android:textColor="#3D3D37"
-        android:textColorHighlight="@color/white"
-        android:textColorHint="#7C7878" />
-    <EditText
-        android:id="@+id/txtBirth"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:background="@drawable/shapeinput"
-        android:drawablePadding="10dp"
-        android:hint="Date of birth"
-        android:drawableLeft="@drawable/burst_icon"
-        android:textColor="#3D3D37"
-        android:textColorHint="#7C7878"
-        android:inputType="date"
-        android:textColorHighlight="@color/white"/>
-
-    <EditText
-        android:id="@+id/txtPhone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/shapeinput"
-        android:drawableLeft="@drawable/phone_icon"
-        android:drawablePadding="10dp"
-        android:hint="Phone"
-        android:padding="10dp"
-        android:textColor="#3D3D37"
-        android:textColorHighlight="@color/white"
-        android:textColorHint="#7C7878" />
-    <Button
-        android:id="@+id/btSignUpt1Id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Next"
-        android:textStyle="bold"
-        android:shadowColor="@android:color/transparent"
-        android:padding="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:textColor="#FFFFFF"
-        android:background="@drawable/shapebutton"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="15dp"
+        android:background="@drawable/bg">
 
 
 
+        <EditText
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:drawableLeft="@drawable/name_icon"
+            android:background="@drawable/shapeinput"
+            android:drawablePadding="10dp"
+            android:hint="Name"
+            android:padding="10dp"
+            android:textColor="#3D3D37"
+            android:textColorHighlight="@color/white"
+            android:textColorHint="#7C7878" />
+        <Spinner
+            android:id="@+id/txtGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:drawableLeft="@drawable/gender_icon"
+            android:background="@drawable/shapeinput"
+            android:drawablePadding="10dp"
+            android:hint="Gender"
+            android:padding="10dp"
+            android:textColor="#3D3D37"
+            android:textColorHighlight="@color/white"
+            android:textColorHint="#7C7878" />
+        <EditText
+            android:id="@+id/txtBirth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:background="@drawable/shapeinput"
+            android:drawablePadding="10dp"
+            android:hint="Date of birth"
+            android:drawableLeft="@drawable/burst_icon"
+            android:textColor="#3D3D37"
+            android:textColorHint="#7C7878"
+            android:inputType="date"
+            android:textColorHighlight="@color/white"/>
+
+        <EditText
+            android:id="@+id/txtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/shapeinput"
+            android:drawableLeft="@drawable/email_icon"
+            android:drawablePadding="10dp"
+            android:hint="Email"
+            android:padding="10dp"
+            android:textColor="#3D3D37"
+            android:textColorHighlight="@color/white"
+            android:textColorHint="#7C7878" />
+        <Button
+            android:id="@+id/btSignUpt1Id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:textStyle="bold"
+            android:shadowColor="@android:color/transparent"
+            android:padding="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/shapebutton"/>
 
 
 
 
-</LinearLayout>
+
+
+
+    </LinearLayout>
 </LinearLayout>

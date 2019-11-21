@@ -23,15 +23,16 @@
         android:background="@drawable/bg">
 
 
+
         <EditText
-            android:id="@+id/txtEmail"
+            android:id="@+id/txtPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/shapeinput"
-            android:drawableLeft="@drawable/email_icon"
+            android:drawableLeft="@drawable/phone_icon"
             android:drawablePadding="10dp"
-            android:hint="Email"
+            android:hint="Phone"
             android:padding="10dp"
             android:textColor="#3D3D37"
             android:textColorHighlight="@color/white"

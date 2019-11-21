@@ -1,37 +1,37 @@
 package com.example.users_redimed;
 
-        import androidx.annotation.NonNull;
-        import androidx.appcompat.app.AppCompatActivity;
-        import androidx.lifecycle.ViewModelProviders;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
-        import android.content.Intent;
-        import android.database.Cursor;
-        import android.os.Bundle;
-        import android.util.Log;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.TextView;
-        import android.widget.Toast;
+import android.content.Intent;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
-        import com.example.users_redimed.Model.User;
-        import com.google.firebase.database.DataSnapshot;
-        import com.google.firebase.database.DatabaseError;
-        import com.google.firebase.database.DatabaseReference;
-        import com.google.firebase.database.FirebaseDatabase;
-        import com.google.firebase.database.ValueEventListener;
+import com.example.users_redimed.Model.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-        import java.io.File;
+import java.io.File;
 
 public class Login extends AppCompatActivity {
     Button btLogin;
     TextView tvSignUp;
-    TextView txtEmail;
+    TextView txtPhone;
     TextView txtPass;
     Database databasel;
     int countItem = 0;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
-//    User u = new User("","","");
+    //    User u = new User("","","");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +40,7 @@ public class Login extends AppCompatActivity {
         //ánh xạ
         btLogin = (Button) findViewById(R.id.btLoginId);
         tvSignUp = (TextView) findViewById(R.id.tvSignUpId);
-        txtEmail = (TextView) findViewById(R.id.txtEmail);
+        txtPhone = (TextView) findViewById(R.id.txtPhone);
         txtPass = (TextView) findViewById(R.id.txtPass);
         databasel = new Database(this,"redimed.sqlite",null,1);
 
@@ -49,8 +49,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String[] keys = txtEmail.getText().toString().split("@");
-                String key = keys[0];
+                String key = txtPhone.getText().toString();
                 myRef.child("Patient").child(key).child("Profile").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
@@ -69,25 +68,25 @@ public class Login extends AppCompatActivity {
                                     databasel.QueryData("CREATE TABLE IF NOT EXISTS TabelUser(Id INTEGER PRIMARY KEY, Email VARCHAR(200))");
                                     Cursor itemTests = databasel.GetData("SELECT * FROM TabelUser");
                                     while (itemTests.moveToNext()){
-                                        databasel.QueryData("UPDATE TabelUser SET Email ='"+ u.Email +"' WHERE Id = 1");
+                                        databasel.QueryData("UPDATE TabelUser SET Email ='"+ u.Phone +"' WHERE Id = 1");
                                         it.putExtra("CI",countItem);
                                         startActivity(it);
                                         return;
                                     }
-                                    databasel.QueryData("INSERT INTO TabelUser VALUES(1,'"+u.Email+"')");
+                                    databasel.QueryData("INSERT INTO TabelUser VALUES(1,'"+u.Phone+"')");
                                     it.putExtra("CI",countItem);
                                     startActivity(it);
                                     return;
                                 }
                                 else
                                 {
-                                    Toast.makeText(Login.this, "Email hoặc Password không đúng", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(Login.this, "Phone hoặc Password không đúng", Toast.LENGTH_LONG).show();
                                 }
                             }
                         }
                         catch(Exception e)
                         {
-                            Toast.makeText(Login.this, "Email hoặc Password không đúng", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Login.this, "Phone hoặc Password không đúng", Toast.LENGTH_LONG).show();
                         }
                     }
                     @Override

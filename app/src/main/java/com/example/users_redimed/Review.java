@@ -112,8 +112,7 @@ public class Review extends AppCompatActivity {
         cbQuestion10 = (CheckBox) findViewById(R.id.cbQuestion10);
         cbQuestion11 = (CheckBox) findViewById(R.id.cbQuestion11);
         //user infor
-        String[] keys = user.split("@");
-        key = keys[0];
+        key = user;
         myRef.child("Patient").child(key).child("Profile").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
@@ -134,8 +133,7 @@ public class Review extends AppCompatActivity {
                 progress.setCancelable(false);
                 progress.show();
 
-                String[] keys = user.split("@");
-                key = keys[0];
+                key = user;
                 myRef.child("Patient").child(key).child("Request").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {

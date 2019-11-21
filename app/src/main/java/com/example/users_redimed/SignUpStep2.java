@@ -23,13 +23,13 @@ import com.google.firebase.database.ValueEventListener;
 public class SignUpStep2 extends AppCompatActivity {
 
     Button btSignUps2;
-    TextView txtEmail;
+    TextView txtPhone;
     TextView txtPass;
     TextView txtConfirmPass;
     String bdTxtName;
     String bdTxtGender;
     String bdTxtBirth;
-    String bdTxtPhone;
+    String bdTxtEmail;
     User user = new User("","","","","","");
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
@@ -44,12 +44,12 @@ public class SignUpStep2 extends AppCompatActivity {
             bdTxtName = bd.getString("name");
             bdTxtGender = bd.getString("gender");
             bdTxtBirth = bd.getString("birth");
-            bdTxtPhone = bd.getString("phone");
+            bdTxtEmail = bd.getString("email");
         }
 
         //ánh xạ
         btSignUps2 = (Button) findViewById(R.id.btSignUpt2Id);
-        txtEmail = (TextView) findViewById(R.id.txtEmail);
+        txtPhone = (TextView) findViewById(R.id.txtPhone);
         txtPass = (TextView) findViewById(R.id.txtPass);
         txtConfirmPass = (TextView) findViewById(R.id.txtConfirmPass);
         //code
@@ -64,9 +64,8 @@ public class SignUpStep2 extends AppCompatActivity {
                             int tao = 1;
                             for (DataSnapshot node : dataSnapshot.getChildren()) {
                                 String u = node.getKey();
-                                u = u + "@gmail.com";
-                                if (u.equals(txtEmail.getText().toString())) {
-                                    Toast.makeText(SignUpStep2.this, "Email đã được đăng ký", Toast.LENGTH_SHORT).show();
+                                if (u.equals(txtPhone.getText().toString())) {
+                                    Toast.makeText(SignUpStep2.this, "Phone đã được đăng ký", Toast.LENGTH_SHORT).show();
                                     tao = 0;
                                 }
                             }
@@ -75,18 +74,17 @@ public class SignUpStep2 extends AppCompatActivity {
                                     user.Name = bdTxtName;
                                     user.Gender = bdTxtGender;
                                     user.Birth = bdTxtBirth;
-                                    user.Phone = bdTxtPhone;
-                                    user.Email = txtEmail.getText().toString();
+                                    user.Email = bdTxtEmail;
+                                    user.Phone = txtPhone.getText().toString();
                                     user.Pass = txtPass.getText().toString();
-                                    String[] keys = txtEmail.getText().toString().split("@");
-                                    String key =  keys[0];
+                                    String key = txtPhone.getText().toString();
 
                                     myRef.child("Patient").child(key).child("Profile").setValue(user);
                                     Intent it = new Intent(SignUpStep2.this, Login.class);
                                     startActivity(it);
                                 }
                                 catch(Exception e) {
-                                    Toast.makeText(SignUpStep2.this, "Email Không hợp lệ", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SignUpStep2.this, "Phone Không hợp lệ", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         }

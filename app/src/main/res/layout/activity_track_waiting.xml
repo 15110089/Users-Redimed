@@ -9,35 +9,38 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="-295dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg"
             android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:id="@+id/idImg1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:background="@drawable/shapeborderimage"
-                android:scaleType="fitXY"
-                android:src="@drawable/photot_icon" />
+            android:orientation="vertical"
+            android:background="@drawable/bg">
 
-
-            <EditText
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:gravity="center_horizontal">
+                <ImageView
+                    android:id="@+id/idImg1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/shapeborderimage"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/photot_icon" />
+            </LinearLayout>
+            <TextView
                 android:id="@+id/txtRegion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:background="@drawable/shapeinput"
                 android:drawablePadding="10dp"
                 android:padding="15dp"
-                android:textColor="#3D3D37"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="@color/white"
                 android:textColorHighlight="@color/white"
                 android:textColorHint="#7C7878" />
 
@@ -76,6 +79,7 @@
 
                     <CheckBox
                         android:id="@+id/cbQuestion1"
+                        android:enabled="false"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:layout_marginLeft="0dp"
@@ -103,6 +107,7 @@
 
                     <CheckBox
                         android:id="@+id/cbQuestion2"
+                        android:enabled="false"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:layout_marginLeft="0dp"
@@ -139,6 +144,7 @@
 
                     <CheckBox
                         android:id="@+id/cbQuestion3"
+                        android:enabled="false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="0dp"
@@ -166,6 +172,7 @@
 
                     <CheckBox
                         android:id="@+id/cbQuestion4"
+                        android:enabled="false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="0dp"
@@ -202,6 +209,7 @@
 
                     <CheckBox
                         android:id="@+id/cbQuestion5"
+                        android:enabled="false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="0dp"
@@ -237,6 +245,7 @@
 
                     <CheckBox
                         android:id="@+id/cbQuestion6"
+                        android:enabled="false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="0dp"
@@ -259,6 +268,7 @@
 
                     <EditText
                         android:id="@+id/txtQuestion1"
+                        android:enabled="false"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -299,6 +309,7 @@
 
                     <CheckBox
                         android:id="@+id/cbQuestion7"
+                        android:enabled="false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="0dp"
@@ -335,6 +346,7 @@
 
                     <CheckBox
                         android:id="@+id/cbQuestion8"
+                        android:enabled="false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="0dp"
@@ -369,6 +381,7 @@
 
                     <CheckBox
                         android:id="@+id/cbQuestion9"
+                        android:enabled="false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="0dp"
@@ -382,12 +395,13 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="371dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/txtQuestion2"
+                        android:enabled="false"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -427,6 +441,7 @@
 
                     <CheckBox
                         android:id="@+id/cbQuestion10"
+                        android:enabled="false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="0dp"
@@ -446,6 +461,7 @@
 
                     <EditText
                         android:id="@+id/txtQuestion3"
+                        android:enabled="false"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -485,6 +501,7 @@
 
                     <CheckBox
                         android:id="@+id/cbQuestion11"
+                        android:enabled="false"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="0dp"
@@ -504,6 +521,7 @@
 
                     <EditText
                         android:id="@+id/txtQuestion4"
+                        android:enabled="false"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -520,39 +538,36 @@
                         android:textColorLink="@color/white"
                         android:textSize="35px" />
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="0dp"
-                        android:drawablePadding="6dp"
-                        android:padding="4dp"
-                        android:text="Feedback:"
-                        android:textColor="@color/white"
-                        android:textSize="40dp"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:id="@+id/txtFeedback"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:drawablePadding="6dp"
-                        android:padding="4dp"
-                        android:textColor="@color/white"
-                        android:textSize="20dp"
-                        android:textStyle="bold" />
-                </LinearLayout>
             </LinearLayout>
+            <TextView
+                android:id="@+id/txtFeedBack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:drawablePadding="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="15dp"
+                android:text="Feedback of Machine Learning: Waiting..."
+                android:textColor="@color/white"
+                android:textColorHighlight="@color/white"
+                android:textColorHint="#7C7878"
+                android:textSize="30dp"/>
+
+            <Button
+                android:id="@+id/btBack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:shadowColor="@android:color/transparent"
+                android:padding="15dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="0dp"
+                android:textColor="#FFFFFF"
+                android:background="@drawable/shapebutton"/>
         </LinearLayout>
     </ScrollView>
 

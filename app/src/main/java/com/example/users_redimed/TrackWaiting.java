@@ -35,8 +35,8 @@ public class TrackWaiting extends AppCompatActivity {
 
     ImageView Img1;
     EditText txtQuestion1;
-    TextView txtFeedback;
-    EditText txtRegion;
+    TextView txtFeedBack;
+    TextView txtRegion;
     EditText txtQuestion2;
     EditText txtQuestion3;
     EditText txtQuestion4;
@@ -67,8 +67,8 @@ public class TrackWaiting extends AppCompatActivity {
         }
         //ánh xạ
         Img1 = (ImageView) findViewById(R.id.idImg1);
-        txtRegion = (EditText) findViewById(R.id.txtRegion);
-        txtFeedback = (TextView) findViewById(R.id.txtFeedback);
+        txtRegion = (TextView) findViewById(R.id.txtRegion);
+        txtFeedBack = (TextView) findViewById(R.id.txtFeedBack);
         txtQuestion1 = (EditText) findViewById(R.id.txtQuestion1);
         txtQuestion2 = (EditText) findViewById(R.id.txtQuestion2);
         txtQuestion3 = (EditText) findViewById(R.id.txtQuestion3);
@@ -133,7 +133,7 @@ public class TrackWaiting extends AppCompatActivity {
         myRef.child("Patient").child(key).child("Request").child(keyRequest).child("Feedback").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
-                    txtFeedback.setText(dataSnapshot.getValue(String.class));
+                txtFeedBack.setText(dataSnapshot.getValue(String.class));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

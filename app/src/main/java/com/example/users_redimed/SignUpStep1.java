@@ -19,7 +19,7 @@ public class SignUpStep1 extends AppCompatActivity {
     TextView txtName;
     Spinner txtGender;
     TextView txtBirth;
-    TextView txtPhone;
+    TextView txtEmail;
     Button btSignUps1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class SignUpStep1 extends AppCompatActivity {
         txtName = (TextView) findViewById(R.id.txtName);
         txtGender = (Spinner) findViewById(R.id.txtGender);
         txtBirth = (TextView) findViewById(R.id.txtBirth);
-        txtPhone = (TextView) findViewById(R.id.txtPhone);
+        txtEmail = (TextView) findViewById(R.id.txtEmail);
 
         List<String> list = new ArrayList<>();
         list.add("Male");
@@ -47,7 +47,7 @@ public class SignUpStep1 extends AppCompatActivity {
                 it.putExtra("name",txtName.getText().toString());
                 it.putExtra("gender",txtGender.getSelectedItem().toString());
                 it.putExtra("birth",txtBirth.getText().toString());
-                it.putExtra("phone",txtPhone.getText().toString());
+                it.putExtra("email",txtEmail.getText().toString());
                 startActivity(it);
             }
         });
