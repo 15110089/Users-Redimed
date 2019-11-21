@@ -58,7 +58,7 @@ public class SignUpStep2 extends AppCompatActivity {
             public void onClick(View v) {
                 if (txtPass.getText().toString().equals(txtConfirmPass.getText().toString())) {
 
-                    myRef.child("Patient").addValueEventListener(new ValueEventListener() {
+                    myRef.child("Patient").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             int tao = 1;

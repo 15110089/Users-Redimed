@@ -264,6 +264,10 @@ public class Review extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(Review.this, "Image not yet", Toast.LENGTH_LONG).show();
+                    myRef.child("Patient").child(key).child("Request").child(strKeyRequest).removeValue();
+                    myRef.child("NewRequest").child(key).child("Profile").removeValue();
+                    myRef.child("NewRequest").child(key).child("Request").child(strKeyRequest).removeValue();
+                    progress.dismiss();
                 }
 //                //ảnh 2
 //                if (image2Invalid == 1) {
