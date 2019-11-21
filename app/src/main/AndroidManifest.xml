@@ -18,9 +18,6 @@
         <activity android:name=".LichSu2Activity" />
         <activity android:name=".LichSu1Activity" />
         <activity android:name=".Review" />
-        <activity android:name=".SignUpStep5" />
-        <activity android:name=".SignUpStep4" />
-        <activity android:name=".SignUpStep3" />
         <activity android:name=".SignUpStep2" />
         <activity android:name=".SignUpStep1" />
         <activity android:name=".AddItem2" />

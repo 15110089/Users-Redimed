@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -63,6 +64,7 @@ public class Review extends AppCompatActivity {
     CheckBox cbQuestion10;
     CheckBox cbQuestion11;
     String key;
+    ProgressDialog progress;
     String strKeyRequest;
     int image1Invalid = 0;
     int image2Invalid = 0;
@@ -89,6 +91,7 @@ public class Review extends AppCompatActivity {
             user = itemTest.getString(1);
         }
         //ánh xạ
+        progress = new ProgressDialog(Review.this);
         btSend = (Button) findViewById(R.id.btSendId);
         Img1 = (ImageView) findViewById(R.id.idImg1);
 
@@ -125,6 +128,11 @@ public class Review extends AppCompatActivity {
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                progress.setTitle("Request is being sent");
+                progress.setMessage("Waiting ...");
+                progress.setCancelable(false);
+                progress.show();
 
                 String[] keys = user.split("@");
                 key = keys[0];
@@ -242,6 +250,7 @@ public class Review extends AppCompatActivity {
                                 public void onSuccess(Uri uri) {
                                     // Got the download URL for 'users/me/profile.png'
                                     myRef.child("Patient").child(key).child("Request").child(strKeyRequest).child("LinkImage1").setValue(uri.toString());
+                                    progress.dismiss();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
