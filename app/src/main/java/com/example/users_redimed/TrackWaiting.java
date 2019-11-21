@@ -10,6 +10,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -51,6 +53,7 @@ public class TrackWaiting extends AppCompatActivity {
     CheckBox cbQuestion9;
     CheckBox cbQuestion10;
     CheckBox cbQuestion11;
+    Button btBack;
     String keyRequest;
     String user;
     Database databasel;
@@ -84,6 +87,7 @@ public class TrackWaiting extends AppCompatActivity {
         cbQuestion9 = (CheckBox) findViewById(R.id.cbQuestion9);
         cbQuestion10 = (CheckBox) findViewById(R.id.cbQuestion10);
         cbQuestion11 = (CheckBox) findViewById(R.id.cbQuestion11);
+        btBack = (Button) findViewById(R.id.btBack);
         databasel = new Database(this,"redimed.sqlite",null,1);
         Cursor itemTest = databasel.GetData("SELECT * FROM TabelUser WHERE Id = 1");
         while (itemTest.moveToNext()){
@@ -142,6 +146,14 @@ public class TrackWaiting extends AppCompatActivity {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+        //code
+        btBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it  =new Intent(TrackWaiting.this,RequestSent.class);
+                startActivity(it);
             }
         });
 
