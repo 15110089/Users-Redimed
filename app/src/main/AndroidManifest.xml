@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
-    package="com.example.users_redimed">
+    package="com.app.users_redimed">
 
     <dist:module dist:instant="true" />
 
@@ -12,21 +12,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TrackWaiting"></activity>
-        <activity android:name=".RequestSent" />
-        <activity android:name=".AddRequestAndTrack" />
-        <activity android:name=".LichSu2Activity" />
-        <activity android:name=".LichSu1Activity" />
-        <activity android:name=".Review" />
-        <activity android:name=".SignUpStep2" />
-        <activity android:name=".SignUpStep1" />
-        <activity android:name=".AddItem2" />
-        <activity android:name=".AddItem1" />
-        <activity android:name=".AddItem" />
-        <activity android:name=".RequestAdvice" />
-        <activity android:name=".Option" />
-        <activity android:name=".Login" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.app.users_redimed.TrackWaiting"></activity>
+        <activity android:name="com.app.users_redimed.RequestSent" />
+        <activity android:name="com.app.users_redimed.AddRequestAndTrack" />
+        <activity android:name="com.app.users_redimed.LichSu2Activity" />
+        <activity android:name="com.app.users_redimed.LichSu1Activity" />
+        <activity android:name="com.app.users_redimed.Review" />
+        <activity android:name="com.app.users_redimed.SignUpStep2" />
+        <activity android:name="com.app.users_redimed.SignUpStep1" />
+        <activity android:name="com.app.users_redimed.AddItem2" />
+        <activity android:name="com.app.users_redimed.AddItem1" />
+        <activity android:name="com.app.users_redimed.AddItem" />
+        <activity android:name="com.app.users_redimed.RequestAdvice" />
+        <activity android:name="com.app.users_redimed.Option" />
+        <activity android:name="com.app.users_redimed.Login" />
+        <activity android:name="com.app.users_redimed.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
