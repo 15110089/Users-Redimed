@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class Login extends AppCompatActivity {
     Button btLogin;
@@ -62,6 +64,9 @@ public class Login extends AppCompatActivity {
                                 {
                                     Intent it  =new Intent(Login.this,Option.class);
                                     //create table
+                                    String key = txtPhone.getText().toString();
+                                    myRef.child("Patient").child(key).child("Profile").child("Token").setValue(FirebaseInstanceId.getInstance().getToken());
+
                                     databasel.QueryData("CREATE TABLE IF NOT EXISTS TabelUser(Id INTEGER PRIMARY KEY, Email VARCHAR(200))");
                                     Cursor itemTests = databasel.GetData("SELECT * FROM TabelUser");
                                     while (itemTests.moveToNext()){
