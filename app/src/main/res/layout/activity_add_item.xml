@@ -11,18 +11,19 @@
 
 
 
-    <Spinner
-        android:id="@+id/spRegionBodyId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/shapeinput"
-        android:drawablePadding="10dp"
-        android:hint="Region part"
-        android:padding="15dp"
-        android:textColor="#3D3D37"
-        android:textColorHighlight="@color/white"
-        android:textColorHint="#7C7878" />
+<!--    <Spinner-->
+<!--        android:id="@+id/spRegionBodyId"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:background="@drawable/shapeinput"-->
+<!--        android:drawablePadding="10dp"-->
+<!--        android:hint="Region part"-->
+<!--        android:padding="15dp"-->
+<!--        android:textColor="#3D3D37"-->
+<!--        android:textColorHighlight="@color/white"-->
+<!--        android:textColorHint="#7C7878" />-->
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,9 +36,23 @@
         android:drawablePadding="6dp"
         android:padding="4dp"/>
 
+    <TextView
+        android:id="@+id/txtLocalBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/white"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:drawablePadding="6dp"
+        android:padding="4dp"/>
+
     <ImageView
         android:id="@+id/imgBody"
-
         android:layout_width="149dp"
         android:layout_height="276dp"
         android:src="@drawable/bodyface" />

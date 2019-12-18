@@ -4,21 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Matrix;
-import android.graphics.Rect;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class AddItem extends AppCompatActivity {
 
@@ -27,6 +22,7 @@ public class AddItem extends AppCompatActivity {
     Button btNextAddItem1;
     Button btChange;
     ImageView imgBody;
+    TextView txtLocalBody;
     int countItem;
     Database databasel;
     int bodyFace = 1;
@@ -46,25 +42,26 @@ public class AddItem extends AppCompatActivity {
         databasel = new Database(this,"redimed.sqlite",null,1);
         //databasel.QueryData("drop table 'TabelName'");
         databasel.QueryData("CREATE TABLE IF NOT EXISTS TabelName(Id INTEGER PRIMARY KEY, Region VARCHAR(500))");
-        spRegionBody = (Spinner) findViewById(R.id.spRegionBodyId);
+//        spRegionBody = (Spinner) findViewById(R.id.spRegionBodyId);
         txtName = (EditText) findViewById(R.id.txtName);
         btNextAddItem1 = (Button) findViewById(R.id.btAddItem1Id);
+        txtLocalBody = (TextView) findViewById(R.id.txtLocalBody);
         btChange = (Button) findViewById(R.id.btChange);
         imgBody = (ImageView) findViewById(R.id.imgBody);
         databasel.QueryData("DELETE FROM TabelName WHERE Id = 1");
         //code
-        List<String> list = new ArrayList<>();
-        list.add("Region left back");
-        list.add("Region right back");
-        list.add("Region left front");
-        list.add("Region right front");
-        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,list);
-        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-        spRegionBody.setAdapter(adapter);
+//        List<String> list = new ArrayList<>();
+//        list.add("Region left back");
+//        list.add("Region right back");
+//        list.add("Region left front");
+//        list.add("Region right front");
+//        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,list);
+//        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+//        spRegionBody.setAdapter(adapter);
         btNextAddItem1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databasel.QueryData("INSERT INTO TabelName VALUES(1,'"+spRegionBody.getSelectedItem().toString()+"')");
+                databasel.QueryData("INSERT INTO TabelName VALUES(1,'"+txtLocalBody.getText().toString()+"')");
                 Intent it  =new Intent(AddItem.this,AddItem1.class);
                 it.putExtra("CI",countItem);
                 startActivity(it);
@@ -82,52 +79,175 @@ public class AddItem extends AppCompatActivity {
                 int touchX = (int) event.getX();
                 int touchY = (int) event.getY();
 
-                Log.i(">X<",String.valueOf(touchX));
-                Log.i(">Y<",String.valueOf(touchY));
+                int imageX = touchX - viewCoords[0]; // posXY[0] is the X coordinate
+                int imageY = touchY - viewCoords[1]; // posXY[1] is the y coordinate
 
-                if(46<touchX&&touchX<113&&271<touchY&&touchY<415){
-                    Log.i(">local<:","5");
-                }
-                if(46<touchX&&touchX<113&&127<touchY&&touchY<271){
-                    Log.i(">local<:","6");
-                }
+//                Log.i(">X<",String.valueOf(touchX));
+//                Log.i(">Y<",String.valueOf(touchY));
 
-                if(127<touchX&&touchX<189&&116<touchY&&touchY<234){
+                int iX = imageX*1000/imgBody.getMeasuredHeight();
+                int iY = imageY*1000/imgBody.getMeasuredWidth();
+
+                Log.i(">X<","============");
+                Log.i(">X<",String.valueOf(iX));
+                Log.i(">Y<",String.valueOf(iY));
+                Log.i(">Y<","============");
+
+                String localBody="";
+                int khongTrong =40;
+//                if(46<touchX&&touchX<113&&271<touchY&&touchY<415){
+//                    Log.i(">local<:","5");
+//                    localBody = "Left Forearm";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_5);
+//                    }
+//                }
+//                if(46<touchX&&touchX<113&&127<touchY&&touchY<271){
+//                    Log.i(">local<:","6");
+//                    localBody = "Left Arm";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_6);
+//                    }
+//                }
+//
+//                if(127<touchX&&touchX<189&&116<touchY&&touchY<234){
+//                    Log.i(">local<:","1");
+//                    localBody = "Left Chest";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_1);
+//                    }
+//                }
+//                if(189<touchX&&touchX<251&&116<touchY&&touchY<234){
+//                    Log.i(">local<:","2");
+//                    localBody = "Right Chest";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_2);
+//                    }
+//                }
+//                if(127<touchX&&touchX<189&&234<touchY&&touchY<352){
+//                    Log.i(">local<:","3");
+//                    localBody = "Left Abdomen";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_3);
+//                    }
+//                }
+//                if(189<touchX&&touchX<251&&234<touchY&&touchY<352){
+//                    Log.i(">local<:","4");
+//                    localBody = "Right Abdomen";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_4);
+//                    }
+//                }
+//
+//                if(247<touchX&&touchX<335&&112<touchY&&touchY<263){
+//                    Log.i(">local<:","7");
+//                    localBody = "Right Arm";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_7);
+//                    }
+//                }
+//                if(247<touchX&&touchX<335&&263<touchY&&touchY<415){
+//                    Log.i(">local<:","8");
+//                    localBody = "Right Forearm";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_8);
+//                    }
+//                }
+//
+//                if(110<touchX&&touchX<184&&373<touchY&&touchY<547){
+//                    Log.i(">local<:","9");
+//                    localBody = "Left Thigh";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_9);
+//                    }
+//                }
+//                if(110<touchX&&touchX<184&&547<touchY&&touchY<721){
+//                    Log.i(">local<:","10");
+//                    localBody = "Left Calf";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_10);
+//                    }
+//                }
+//
+//                if(191<touchX&&touchX<254&&380<touchY&&touchY<550){
+//                    Log.i(">local<:","11");
+//                    localBody = "Right Thigh";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_11);
+//                    }
+//
+//                }
+//                if(191<touchX&&touchX<254&&550<touchY&&touchY<721){
+//                    Log.i(">local<:","12");
+//                    localBody = "Right Calf";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_12);
+//                    }
+//                }
+//
+//                if(152<touchX&&touchX<205&&10<touchY&&touchY<88){
+//                    Log.i(">local<:","13");
+//                    localBody = "Head";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_13);
+//                    }
+//                }
+
+
+
+                if(-395+khongTrong<iX&&iX<-318+khongTrong&&-1102+khongTrong<iY&&iY<-381+khongTrong){
                     Log.i(">local<:","1");
+                    localBody = "Right Hand";
+                    if(bodyFace == 1){
+                        imgBody.setImageResource(R.drawable.body_f_1);
+                    }
                 }
-                if(189<touchX&&touchX<251&&116<touchY&&touchY<234){
+                if(-128+khongTrong<iX&&iX<-22+khongTrong&&-1120+khongTrong<iY&&iY<-381+khongTrong){
                     Log.i(">local<:","2");
+                    localBody = "Left Hand";
+                    if(bodyFace == 1){
+                        imgBody.setImageResource(R.drawable.body_f_2);
+                    }
                 }
-                if(127<touchX&&touchX<189&&234<touchY&&touchY<352){
+                if(-308+khongTrong<iX&&iX<-128+khongTrong&&-1120+khongTrong<iY&&iY<-598+khongTrong){
                     Log.i(">local<:","3");
+                    localBody = "Body";
+                    if(bodyFace == 1){
+                        imgBody.setImageResource(R.drawable.body_f_3);
+                    }
                 }
-                if(189<touchX&&touchX<251&&234<touchY&&touchY<352){
+                if(-313+khongTrong<iX&&iX<-230+khongTrong&&-462+khongTrong<iY&&iY<411+khongTrong){
                     Log.i(">local<:","4");
+                    localBody = "Right Foot";
+                    if(bodyFace == 1){
+                        imgBody.setImageResource(R.drawable.body_f_4);
+                    }
+                }
+                if(-211+khongTrong<iX&&iX<-128+khongTrong&&-488+khongTrong<iY&&iY<419+khongTrong){
+                    Log.i(">local<:","5");
+                    localBody = "Left Foot";
+                    if(bodyFace == 1){
+                        imgBody.setImageResource(R.drawable.body_f_5);
+                    }
+                }
+                if(-264+khongTrong<iX&&iX<-191+khongTrong&&-1381+khongTrong<iY&&iY<-1209+khongTrong){
+                    Log.i(">local<:","6");
+                    localBody = "Head";
+                    if(bodyFace == 1){
+                        imgBody.setImageResource(R.drawable.body_f_6);
+                    }
                 }
 
-                if(247<touchX&&touchX<335&&112<touchY&&touchY<263){
-                    Log.i(">local<:","7");
-                }
-                if(247<touchX&&touchX<335&&263<touchY&&touchY<415){
-                    Log.i(">local<:","8");
-                }
 
-                if(110<touchX&&touchX<184&&373<touchY&&touchY<547){
-                    Log.i(">local<:","9");
-                }
-                if(110<touchX&&touchX<184&&547<touchY&&touchY<721){
-                    Log.i(">local<:","10");
-                }
 
-                if(191<touchX&&touchX<254&&380<touchY&&touchY<550){
-                    Log.i(">local<:","11");
-                }
-                if(191<touchX&&touchX<254&&550<touchY&&touchY<721){
-                    Log.i(">local<:","12");
-                }
 
-                if(152<touchX&&touchX<205&&10<touchY&&touchY<88){
-                    Log.i(">local<:","13");
+
+                if(bodyFace==1){
+                    if(localBody!="")
+                        txtLocalBody.setText(localBody + " Front");
+                }else{
+                    if(localBody!="")
+                        txtLocalBody.setText(localBody + " Back");
                 }
 
                 return true;
@@ -147,7 +267,11 @@ public class AddItem extends AppCompatActivity {
             }
         });
 
+
+
+
     }
+
 
 
 }

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
@@ -15,11 +16,13 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.users_redimed.Model.NewRequest;
@@ -46,8 +49,9 @@ import java.util.Date;
 public class Review extends AppCompatActivity {
 
     ImageView Img1;
+    ImageView imgBody;
     EditText txtQuestion1;
-    EditText txtRegion;
+    TextView txtRegion;
     EditText txtQuestion2;
     EditText txtQuestion3;
     EditText txtQuestion4;
@@ -62,6 +66,7 @@ public class Review extends AppCompatActivity {
     CheckBox cbQuestion9;
     CheckBox cbQuestion10;
     CheckBox cbQuestion11;
+    Button btChange;
     String key;
     ProgressDialog progress;
     String strKeyRequest;
@@ -69,6 +74,8 @@ public class Review extends AppCompatActivity {
     int image2Invalid = 0;
     int image3Invalid = 0;
     int image4Invalid = 0;
+    int bodyFace = 1;
+
     Button btSend;
     String user;
     User userInfor;
@@ -78,6 +85,7 @@ public class Review extends AppCompatActivity {
     StorageReference storageRef = storage.getReference();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,7 +102,7 @@ public class Review extends AppCompatActivity {
         btSend = (Button) findViewById(R.id.btSendId);
         Img1 = (ImageView) findViewById(R.id.idImg1);
 
-        txtRegion = (EditText) findViewById(R.id.txtRegion);
+        txtRegion = (TextView) findViewById(R.id.txtRegion);
         txtQuestion1 = (EditText) findViewById(R.id.txtQuestion1);
         txtQuestion2 = (EditText) findViewById(R.id.txtQuestion2);
         txtQuestion3 = (EditText) findViewById(R.id.txtQuestion3);
@@ -110,6 +118,8 @@ public class Review extends AppCompatActivity {
         cbQuestion9 = (CheckBox) findViewById(R.id.cbQuestion9);
         cbQuestion10 = (CheckBox) findViewById(R.id.cbQuestion10);
         cbQuestion11 = (CheckBox) findViewById(R.id.cbQuestion11);
+        imgBody = (ImageView) findViewById(R.id.imgBody);
+        btChange = (Button) findViewById(R.id.btChange);
         //user infor
         key = user;
         myRef.child("Patient").child(key).child("Profile").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -123,6 +133,207 @@ public class Review extends AppCompatActivity {
             }
         });
         //code
+        imgBody.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                int[] viewCoords = new int[2];
+                imgBody.getLocationOnScreen(viewCoords);
+
+                int touchX = (int) event.getX();
+                int touchY = (int) event.getY();
+
+                int imageX = touchX - viewCoords[0]; // posXY[0] is the X coordinate
+                int imageY = touchY - viewCoords[1]; // posXY[1] is the y coordinate
+
+//                Log.i(">X<",String.valueOf(touchX));
+//                Log.i(">Y<",String.valueOf(touchY));
+
+                int iX = imageX*1000/imgBody.getMeasuredHeight();
+                int iY = imageY*1000/imgBody.getMeasuredWidth();
+
+                Log.i(">X<","============");
+                Log.i(">X<",String.valueOf(iX));
+                Log.i(">Y<",String.valueOf(iY));
+                Log.i(">Y<","============");
+
+                String localBody="";
+                int khongTrong =40;
+//                if(46<touchX&&touchX<113&&271<touchY&&touchY<415){
+//                    Log.i(">local<:","5");
+//                    localBody = "Left Forearm";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_5);
+//                    }
+//                }
+//                if(46<touchX&&touchX<113&&127<touchY&&touchY<271){
+//                    Log.i(">local<:","6");
+//                    localBody = "Left Arm";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_6);
+//                    }
+//                }
+//
+//                if(127<touchX&&touchX<189&&116<touchY&&touchY<234){
+//                    Log.i(">local<:","1");
+//                    localBody = "Left Chest";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_1);
+//                    }
+//                }
+//                if(189<touchX&&touchX<251&&116<touchY&&touchY<234){
+//                    Log.i(">local<:","2");
+//                    localBody = "Right Chest";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_2);
+//                    }
+//                }
+//                if(127<touchX&&touchX<189&&234<touchY&&touchY<352){
+//                    Log.i(">local<:","3");
+//                    localBody = "Left Abdomen";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_3);
+//                    }
+//                }
+//                if(189<touchX&&touchX<251&&234<touchY&&touchY<352){
+//                    Log.i(">local<:","4");
+//                    localBody = "Right Abdomen";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_4);
+//                    }
+//                }
+//
+//                if(247<touchX&&touchX<335&&112<touchY&&touchY<263){
+//                    Log.i(">local<:","7");
+//                    localBody = "Right Arm";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_7);
+//                    }
+//                }
+//                if(247<touchX&&touchX<335&&263<touchY&&touchY<415){
+//                    Log.i(">local<:","8");
+//                    localBody = "Right Forearm";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_8);
+//                    }
+//                }
+//
+//                if(110<touchX&&touchX<184&&373<touchY&&touchY<547){
+//                    Log.i(">local<:","9");
+//                    localBody = "Left Thigh";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_9);
+//                    }
+//                }
+//                if(110<touchX&&touchX<184&&547<touchY&&touchY<721){
+//                    Log.i(">local<:","10");
+//                    localBody = "Left Calf";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_10);
+//                    }
+//                }
+//
+//                if(191<touchX&&touchX<254&&380<touchY&&touchY<550){
+//                    Log.i(">local<:","11");
+//                    localBody = "Right Thigh";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_11);
+//                    }
+//
+//                }
+//                if(191<touchX&&touchX<254&&550<touchY&&touchY<721){
+//                    Log.i(">local<:","12");
+//                    localBody = "Right Calf";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_12);
+//                    }
+//                }
+//
+//                if(152<touchX&&touchX<205&&10<touchY&&touchY<88){
+//                    Log.i(">local<:","13");
+//                    localBody = "Head";
+//                    if(bodyFace == 1){
+//                        imgBody.setImageResource(R.drawable.body_f_13);
+//                    }
+//                }
+
+
+
+                if(-395+khongTrong<iX&&iX<-318+khongTrong&&-1102+khongTrong<iY&&iY<-381+khongTrong){
+                    Log.i(">local<:","1");
+                    localBody = "Right Hand";
+                    if(bodyFace == 1){
+                        imgBody.setImageResource(R.drawable.body_f_1);
+
+                    }
+                }
+                if(-128+khongTrong<iX&&iX<-22+khongTrong&&-1120+khongTrong<iY&&iY<-381+khongTrong){
+                    Log.i(">local<:","2");
+                    localBody = "Left Hand";
+                    if(bodyFace == 1){
+                        imgBody.setImageResource(R.drawable.body_f_2);
+                    }
+                }
+                if(-308+khongTrong<iX&&iX<-128+khongTrong&&-1120+khongTrong<iY&&iY<-598+khongTrong){
+                    Log.i(">local<:","3");
+                    localBody = "Body";
+                    if(bodyFace == 1){
+                        imgBody.setImageResource(R.drawable.body_f_3);
+                    }
+                }
+                if(-313+khongTrong<iX&&iX<-230+khongTrong&&-462+khongTrong<iY&&iY<411+khongTrong){
+                    Log.i(">local<:","4");
+                    localBody = "Right Foot";
+                    if(bodyFace == 1){
+                        imgBody.setImageResource(R.drawable.body_f_4);
+                    }
+                }
+                if(-211+khongTrong<iX&&iX<-128+khongTrong&&-488+khongTrong<iY&&iY<419+khongTrong){
+                    Log.i(">local<:","5");
+                    localBody = "Left Foot";
+                    if(bodyFace == 1){
+                        imgBody.setImageResource(R.drawable.body_f_5);
+                    }
+                }
+                if(-264+khongTrong<iX&&iX<-191+khongTrong&&-1381+khongTrong<iY&&iY<-1209+khongTrong){
+                    Log.i(">local<:","6");
+                    localBody = "Head";
+                    if(bodyFace == 1){
+                        imgBody.setImageResource(R.drawable.body_f_6);
+                    }
+                }
+
+
+
+
+
+                if(bodyFace==1){
+                    if(localBody!="")
+                        txtRegion.setText(localBody + " Front");
+                    rq.Region = localBody + " Front";
+                }else{
+                    if(localBody!="")
+                        txtRegion.setText(localBody + " Back");
+                    rq.Region = localBody + " Back";
+                }
+
+                return true;
+            }
+
+        });
+        btChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(bodyFace == 1){
+                    imgBody.setImageResource(R.drawable.bodyback);
+                    bodyFace = 0;
+                }else{
+                    imgBody.setImageResource(R.drawable.bodyface);
+                    bodyFace = 1;
+                }
+            }
+        });
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -422,6 +633,26 @@ public class Review extends AppCompatActivity {
         while (itemName.moveToNext()){
             rq.Region = itemName.getString(1);
             txtRegion.setText(itemName.getString(1));
+
+            ///////
+            if(itemName.getString(1).equals("Right Hand Front")){
+                imgBody.setImageResource(R.drawable.body_f_1);
+            }
+            if(itemName.getString(1).equals("Left Hand Front")){
+                imgBody.setImageResource(R.drawable.body_f_2);
+            }
+            if(itemName.getString(1).equals("Body Front")){
+                imgBody.setImageResource(R.drawable.body_f_3);
+            }
+            if(itemName.getString(1).equals("Right Foot Front")){
+                imgBody.setImageResource(R.drawable.body_f_4);
+            }
+            if(itemName.getString(1).equals("Left Foot Front")){
+                imgBody.setImageResource(R.drawable.body_f_5);
+            }
+            if(itemName.getString(1).equals("Head Front")){
+                imgBody.setImageResource(R.drawable.body_f_6);
+            }
         }
         //Get id
         //get image 1
