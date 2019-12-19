@@ -24,6 +24,7 @@ import com.squareup.picasso.Picasso;
 public class TrackWaiting extends AppCompatActivity {
 
     ImageView Img1;
+    ImageView imgBody;
     EditText txtQuestion1;
     TextView txtFeedBack;
     TextView txtRegion;
@@ -58,6 +59,7 @@ public class TrackWaiting extends AppCompatActivity {
         }
         //ánh xạ
         Img1 = (ImageView) findViewById(R.id.idImg1);
+        imgBody = (ImageView) findViewById(R.id.imgBody);
         txtRegion = (TextView) findViewById(R.id.txtRegion);
         txtFeedBack = (TextView) findViewById(R.id.txtFeedBack);
         txtQuestion1 = (EditText) findViewById(R.id.txtQuestion1);
@@ -117,6 +119,44 @@ public class TrackWaiting extends AppCompatActivity {
                 txtQuestion4.setText(rq.Question4);
                 txtRegion.setText(rq.Region);
                 Picasso.get().load(rq.LinkImage1).into(Img1);
+
+                if(rq.Region.equals("Right Hand Front")){
+                    imgBody.setImageResource(R.drawable.body_f_1);
+                }
+                if(rq.Region.equals("Left Hand Front")){
+                    imgBody.setImageResource(R.drawable.body_f_2);
+                }
+                if(rq.Region.equals("Body Front")){
+                    imgBody.setImageResource(R.drawable.body_f_3);
+                }
+                if(rq.Region.equals("Right Foot Front")){
+                    imgBody.setImageResource(R.drawable.body_f_4);
+                }
+                if(rq.Region.equals("Left Foot Front")){
+                    imgBody.setImageResource(R.drawable.body_f_5);
+                }
+                if(rq.Region.equals("Head Front")){
+                    imgBody.setImageResource(R.drawable.body_f_6);
+                }
+
+                if(rq.Region.equals("Right Hand Back")){
+                    imgBody.setImageResource(R.drawable.body_b_1);
+                }
+                if(rq.Region.equals("Left Hand Back")){
+                    imgBody.setImageResource(R.drawable.body_b_2);
+                }
+                if(rq.Region.equals("Body Back")){
+                    imgBody.setImageResource(R.drawable.body_b_3);
+                }
+                if(rq.Region.equals("Right Foot Back")){
+                    imgBody.setImageResource(R.drawable.body_b_4);
+                }
+                if(rq.Region.equals("Left Foot Back")){
+                    imgBody.setImageResource(R.drawable.body_b_5);
+                }
+                if(rq.Region.equals("Head Back")){
+                    imgBody.setImageResource(R.drawable.body_b_6);
+                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

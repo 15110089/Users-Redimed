@@ -150,16 +150,16 @@ public class Review extends AppCompatActivity {
 //                Log.i(">X<",String.valueOf(touchX));
 //                Log.i(">Y<",String.valueOf(touchY));
 
-                int iX = imageX*1000/imgBody.getMeasuredHeight();
-                int iY = imageY*1000/imgBody.getMeasuredWidth();
+                int iX = imageX * 1000 / imgBody.getMeasuredHeight();
+                int iY = imageY * 1000 / imgBody.getMeasuredWidth();
 
-                Log.i(">X<","============");
-                Log.i(">X<",String.valueOf(iX));
-                Log.i(">Y<",String.valueOf(iY));
-                Log.i(">Y<","============");
+                Log.i(">X<", "============");
+                Log.i(">X<", String.valueOf(iX));
+                Log.i(">Y<", String.valueOf(iY));
+                Log.i(">Y<", "============");
 
-                String localBody="";
-                int khongTrong =40;
+                String localBody = "";
+                int khongTrong = 40;
 //                if(46<touchX&&touchX<113&&271<touchY&&touchY<415){
 //                    Log.i(">local<:","5");
 //                    localBody = "Left Forearm";
@@ -259,63 +259,80 @@ public class Review extends AppCompatActivity {
 //                }
 
 
-
-                if(-395+khongTrong<iX&&iX<-318+khongTrong&&-1102+khongTrong<iY&&iY<-381+khongTrong){
-                    Log.i(">local<:","1");
-                    localBody = "Right Hand";
-                    if(bodyFace == 1){
+                //front
+                if (bodyFace == 1) {
+                    if (-395 + khongTrong < iX && iX < -318 + khongTrong && -1102 + khongTrong < iY && iY < -381 + khongTrong) {
+                        Log.i(">local<:", "1");
+                        localBody = "Right Hand";
                         imgBody.setImageResource(R.drawable.body_f_1);
-
                     }
-                }
-                if(-128+khongTrong<iX&&iX<-22+khongTrong&&-1120+khongTrong<iY&&iY<-381+khongTrong){
-                    Log.i(">local<:","2");
-                    localBody = "Left Hand";
-                    if(bodyFace == 1){
+                    if (-128 + khongTrong < iX && iX < -22 + khongTrong && -1120 + khongTrong < iY && iY < -381 + khongTrong) {
+                        Log.i(">local<:", "2");
+                        localBody = "Left Hand";
                         imgBody.setImageResource(R.drawable.body_f_2);
                     }
-                }
-                if(-308+khongTrong<iX&&iX<-128+khongTrong&&-1120+khongTrong<iY&&iY<-598+khongTrong){
-                    Log.i(">local<:","3");
-                    localBody = "Body";
-                    if(bodyFace == 1){
+                    if (-308 + khongTrong < iX && iX < -128 + khongTrong && -1120 + khongTrong < iY && iY < -598 + khongTrong) {
+                        Log.i(">local<:", "3");
+                        localBody = "Body";
                         imgBody.setImageResource(R.drawable.body_f_3);
                     }
-                }
-                if(-313+khongTrong<iX&&iX<-230+khongTrong&&-462+khongTrong<iY&&iY<411+khongTrong){
-                    Log.i(">local<:","4");
-                    localBody = "Right Foot";
-                    if(bodyFace == 1){
+                    if (-313 + khongTrong < iX && iX < -230 + khongTrong && -462 + khongTrong < iY && iY < 411 + khongTrong) {
+                        Log.i(">local<:", "4");
+                        localBody = "Right Foot";
                         imgBody.setImageResource(R.drawable.body_f_4);
                     }
-                }
-                if(-211+khongTrong<iX&&iX<-128+khongTrong&&-488+khongTrong<iY&&iY<419+khongTrong){
-                    Log.i(">local<:","5");
-                    localBody = "Left Foot";
-                    if(bodyFace == 1){
+                    if (-211 + khongTrong < iX && iX < -128 + khongTrong && -488 + khongTrong < iY && iY < 419 + khongTrong) {
+                        Log.i(">local<:", "5");
+                        localBody = "Left Foot";
                         imgBody.setImageResource(R.drawable.body_f_5);
                     }
-                }
-                if(-264+khongTrong<iX&&iX<-191+khongTrong&&-1381+khongTrong<iY&&iY<-1209+khongTrong){
-                    Log.i(">local<:","6");
-                    localBody = "Head";
-                    if(bodyFace == 1){
+                    if (-264 + khongTrong < iX && iX < -191 + khongTrong && -1381 + khongTrong < iY && iY < -1209 + khongTrong) {
+                        Log.i(">local<:", "6");
+                        localBody = "Head";
                         imgBody.setImageResource(R.drawable.body_f_6);
+                    }
+                } else {
+
+                    //Back
+                    if (-405 + khongTrong < iX && iX < -293 + khongTrong && -1127 + khongTrong < iY && iY < -363 + khongTrong) {
+                        Log.i(">local<:", "1");
+                        localBody = "Right Hand";
+                        imgBody.setImageResource(R.drawable.body_b_1);
+                    }
+                    if (-118 + khongTrong < iX && iX < -41 + khongTrong && -1138 + khongTrong < iY && iY < -398 + khongTrong) {
+                        Log.i(">local<:", "2");
+                        localBody = "Left Hand";
+                        imgBody.setImageResource(R.drawable.body_b_2);
+                    }
+                    if (-299 + khongTrong < iX && iX < -114 + khongTrong && -1127 + khongTrong < iY && iY < -562 + khongTrong) {
+                        Log.i(">local<:", "3");
+                        localBody = "Body";
+                        imgBody.setImageResource(R.drawable.body_b_3);
+                    }
+                    if (-299 + khongTrong < iX && iX < -206 + khongTrong && -498 + khongTrong < iY && iY < 411 + khongTrong) {
+                        Log.i(">local<:", "4");
+                        localBody = "Right Foot";
+                        imgBody.setImageResource(R.drawable.body_b_4);
+                    }
+                    if (-216 + khongTrong < iX && iX < -114 + khongTrong && -506 + khongTrong < iY && iY < 419 + khongTrong) {
+                        Log.i(">local<:", "5");
+                        localBody = "Left Foot";
+                        imgBody.setImageResource(R.drawable.body_b_5);
+                    }
+                    if (-245 + khongTrong < iX && iX < -158 + khongTrong && -1388 + khongTrong < iY && iY < -1209 + khongTrong) {
+                        Log.i(">local<:", "6");
+                        localBody = "Head";
+                        imgBody.setImageResource(R.drawable.body_b_6);
                     }
                 }
 
 
-
-
-
-                if(bodyFace==1){
-                    if(localBody!="")
+                if (bodyFace == 1) {
+                    if (localBody != "")
                         txtRegion.setText(localBody + " Front");
-                    rq.Region = localBody + " Front";
-                }else{
-                    if(localBody!="")
+                } else {
+                    if (localBody != "")
                         txtRegion.setText(localBody + " Back");
-                    rq.Region = localBody + " Back";
                 }
 
                 return true;
@@ -652,6 +669,25 @@ public class Review extends AppCompatActivity {
             }
             if(itemName.getString(1).equals("Head Front")){
                 imgBody.setImageResource(R.drawable.body_f_6);
+            }
+
+            if(itemName.getString(1).equals("Right Hand Back")){
+                imgBody.setImageResource(R.drawable.body_b_1);
+            }
+            if(itemName.getString(1).equals("Left Hand Back")){
+                imgBody.setImageResource(R.drawable.body_b_2);
+            }
+            if(itemName.getString(1).equals("Body Back")){
+                imgBody.setImageResource(R.drawable.body_b_3);
+            }
+            if(itemName.getString(1).equals("Right Foot Back")){
+                imgBody.setImageResource(R.drawable.body_b_4);
+            }
+            if(itemName.getString(1).equals("Left Foot Back")){
+                imgBody.setImageResource(R.drawable.body_b_5);
+            }
+            if(itemName.getString(1).equals("Head Back")){
+                imgBody.setImageResource(R.drawable.body_b_6);
             }
         }
         //Get id
