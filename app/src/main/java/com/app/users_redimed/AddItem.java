@@ -23,6 +23,7 @@ public class AddItem extends AppCompatActivity {
     Button btChange;
     ImageView imgBody;
     TextView txtLocalBody;
+    TextView testLocal;
     int countItem;
     Database databasel;
     int bodyFace = 1;
@@ -45,6 +46,7 @@ public class AddItem extends AppCompatActivity {
         txtName = (EditText) findViewById(R.id.txtName);
         btNextAddItem1 = (Button) findViewById(R.id.btAddItem1Id);
         txtLocalBody = (TextView) findViewById(R.id.txtLocalBody);
+        testLocal = (TextView) findViewById(R.id.testLocal);
         btChange = (Button) findViewById(R.id.btChange);
         imgBody = (ImageView) findViewById(R.id.imgBody);
         databasel.QueryData("DELETE FROM TabelName WHERE Id = 1");
@@ -78,20 +80,23 @@ public class AddItem extends AppCompatActivity {
                 int touchX = (int) event.getX();
                 int touchY = (int) event.getY();
 
+                int pX = (touchX * 100) / imgBody.getMeasuredWidth();
+                int pY = (touchY * 100) / imgBody.getMeasuredHeight();
+
                 int imageX = touchX - viewCoords[0]; // posXY[0] is the X coordinate
                 int imageY = touchY - viewCoords[1]; // posXY[1] is the y coordinate
 
-//                Log.i(">X<",String.valueOf(touchX));
-//                Log.i(">Y<",String.valueOf(touchY));
+                Log.i(">X<",String.valueOf(touchX));
+                Log.i(">Y<",String.valueOf(touchY));
 
                 int iX = imageX * 1000 / imgBody.getMeasuredHeight();
                 int iY = imageY * 1000 / imgBody.getMeasuredWidth();
 
-                Log.i(">X<", "============");
-                Log.i(">X<", String.valueOf(iX));
-                Log.i(">Y<", String.valueOf(iY));
-                Log.i(">Y<", "============");
-
+//                Log.i(">X<", "============");
+//                Log.i(">X<", String.valueOf(iX));
+//                Log.i(">Y<", String.valueOf(iY));
+//                Log.i(">Y<", "============");
+                String testLocalstring = "";
                 String localBody = "";
                 int khongTrong = 40;
 //                if(46<touchX&&touchX<113&&271<touchY&&touchY<415){
@@ -194,71 +199,176 @@ public class AddItem extends AppCompatActivity {
 
 
                 //front
+//                if (bodyFace == 1) {
+//                    if (-395 < iX && iX < -318 && -1102 < iY && iY < -381) {
+//                        Log.i(">local<:", "1");
+//                        localBody = "Right Hand";
+//                        imgBody.setImageResource(R.drawable.body_f_1);
+//                        testLocal.setText(testLocalstring);
+//                        testLocalstring = testLocalstring + localBody;
+//                    }
+//                    if (-128 < iX && iX < -22 && -1120 < iY && iY < -381) {
+//                        Log.i(">local<:", "2");
+//                        localBody = "Left Hand";
+//                        imgBody.setImageResource(R.drawable.body_f_2);
+//                        testLocal.setText("X:" + String.valueOf(iX) + " Y:" + String.valueOf(iY));
+//                        testLocalstring = testLocalstring + localBody;
+//                    }
+//                    if (-308 < iX && iX < -128 && -1120 < iY && iY < -598) {
+//                        Log.i(">local<:", "3");
+//                        localBody = "Body";
+//                        imgBody.setImageResource(R.drawable.body_f_3);
+//                       testLocal.setText("X:"+String.valueOf(iX)+" Y:"+String.valueOf(iY));
+//                        testLocalstring = testLocalstring + localBody;
+//                    }
+//                    if (-313 < iX && iX < -230 && -462 < iY && iY < 411) {
+//                        Log.i(">local<:", "4");
+//                        localBody = "Right Foot";
+//                        imgBody.setImageResource(R.drawable.body_f_4);
+//                       testLocal.setText("X:"+String.valueOf(iX)+" Y:"+String.valueOf(iY));
+//                        testLocalstring = testLocalstring + localBody;
+//                    }
+//                    if (-211 < iX && iX < -128 && -488 < iY && iY < 419) {
+//                        Log.i(">local<:", "5");
+//                        localBody = "Left Foot";
+//                        imgBody.setImageResource(R.drawable.body_f_5);
+//                        testLocal.setText("X:" + String.valueOf(iX) + " Y:" + String.valueOf(iY));
+//                        testLocalstring = testLocalstring + localBody;
+//                    }
+//                    if (-264 < iX && iX < -191 && -1381 < iY && iY < -1209) {
+//                        Log.i(">local<:", "6");
+//                        localBody = "Head";
+//                        imgBody.setImageResource(R.drawable.body_f_6);
+//                        testLocal.setText("X:" + String.valueOf(iX) + " Y:" + String.valueOf(iY));
+//                        testLocalstring = testLocalstring + localBody;
+//                    }
+//                } else {
+//
+//                    //Back
+//                    if (-405 < iX && iX < -293 && -1127 < iY && iY < -363) {
+//                        Log.i(">local<:", "1");
+//                        localBody = "Right Hand";
+//                        imgBody.setImageResource(R.drawable.body_b_1);
+//                        testLocal.setText("X:" + String.valueOf(iX) + " Y:" + String.valueOf(iY));
+//                        testLocalstring = testLocalstring + localBody;
+//                    }
+//                    if (-118 < iX && iX < -41 && -1138 < iY && iY < -398) {
+//                        Log.i(">local<:", "2");
+//                        localBody = "Left Hand";
+//                        imgBody.setImageResource(R.drawable.body_b_2);
+//                        testLocal.setText("X:" + String.valueOf(iX) + " Y:" + String.valueOf(iY));
+//                        testLocalstring = testLocalstring + localBody;
+//                    }
+//                    if (-299 < iX && iX < -114 && -1127 < iY && iY < -562) {
+//                        Log.i(">local<:", "3");
+//                        localBody = "Body";
+//                        imgBody.setImageResource(R.drawable.body_b_3);
+//                        testLocal.setText("X:" + String.valueOf(iX) + " Y:" + String.valueOf(iY));
+//                        testLocalstring = testLocalstring + localBody;
+//                    }
+//                    if (-299 < iX && iX < -206 && -498 < iY && iY < 411) {
+//                        Log.i(">local<:", "4");
+//                        localBody = "Right Foot";
+//                        imgBody.setImageResource(R.drawable.body_b_4);
+//                        testLocal.setText("X:" + String.valueOf(iX) + " Y:" + String.valueOf(iY));
+//                        testLocalstring = testLocalstring + localBody;
+//                    }
+//                    if (-216 < iX && iX < -114 && -506 < iY && iY < 419) {
+//                        Log.i(">local<:", "5");
+//                        localBody = "Left Foot";
+//                        imgBody.setImageResource(R.drawable.body_b_5);
+//                        testLocal.setText("X:" + String.valueOf(iX) + " Y:" + String.valueOf(iY));
+//                        testLocalstring = testLocalstring + localBody;
+//                    }
+//                    if (-245 < iX && iX < -158 && -1388 < iY && iY < -1209) {
+//                        Log.i(">local<:", "6");
+//                        localBody = "Head";
+//                        imgBody.setImageResource(R.drawable.body_b_6);
+//                        testLocal.setText("X:" + String.valueOf(iX) + " Y:" + String.valueOf(iY));
+//                        testLocalstring = testLocalstring + localBody;
+//                    }
+//                }
+
                 if (bodyFace == 1) {
-                    if (-395 + khongTrong < iX && iX < -318 + khongTrong && -1102 + khongTrong < iY && iY < -381 + khongTrong) {
+                    if (11 < pX && pX < 28 && 16 < pY && pY < 56) {
                         Log.i(">local<:", "1");
                         localBody = "Right Hand";
                         imgBody.setImageResource(R.drawable.body_f_1);
+                        testLocal.setText(testLocalstring);
+                        testLocalstring = testLocalstring + localBody;
                     }
-                    if (-128 + khongTrong < iX && iX < -22 + khongTrong && -1120 + khongTrong < iY && iY < -381 + khongTrong) {
+                    if (64 < pX && pX < 84 && 16 < pY && pY < 56) {
                         Log.i(">local<:", "2");
                         localBody = "Left Hand";
                         imgBody.setImageResource(R.drawable.body_f_2);
+                        testLocalstring = testLocalstring + localBody;
                     }
-                    if (-308 + khongTrong < iX && iX < -128 + khongTrong && -1120 + khongTrong < iY && iY < -598 + khongTrong) {
+                    if (28 < pX && pX < 64 && 15 < pY && pY < 44) {
                         Log.i(">local<:", "3");
                         localBody = "Body";
                         imgBody.setImageResource(R.drawable.body_f_3);
+                        testLocalstring = testLocalstring + localBody;
                     }
-                    if (-313 + khongTrong < iX && iX < -230 + khongTrong && -462 + khongTrong < iY && iY < 411 + khongTrong) {
+                    if (28 < pX && pX < 47 && 43 < pY && pY < 98) {
                         Log.i(">local<:", "4");
                         localBody = "Right Foot";
                         imgBody.setImageResource(R.drawable.body_f_4);
+                        testLocalstring = testLocalstring + localBody;
                     }
-                    if (-211 + khongTrong < iX && iX < -128 + khongTrong && -488 + khongTrong < iY && iY < 419 + khongTrong) {
+                    if (47 < pX && pX < 61 && 41 < pY && pY < 99) {
                         Log.i(">local<:", "5");
                         localBody = "Left Foot";
                         imgBody.setImageResource(R.drawable.body_f_5);
+                        testLocalstring = testLocalstring + localBody;
                     }
-                    if (-264 + khongTrong < iX && iX < -191 + khongTrong && -1381 + khongTrong < iY && iY < -1209 + khongTrong) {
+                    if (37 < pX && pX < 54 && 1 < pY && pY < 11) {
                         Log.i(">local<:", "6");
                         localBody = "Head";
                         imgBody.setImageResource(R.drawable.body_f_6);
+                        testLocalstring = testLocalstring + localBody;
                     }
                 } else {
 
                     //Back
-                    if (-405 + khongTrong < iX && iX < -293 + khongTrong && -1127 + khongTrong < iY && iY < -363 + khongTrong) {
+                    if (-405 < touchX && touchX < -293 && -1127 < pY && pY < -363) {
                         Log.i(">local<:", "1");
                         localBody = "Right Hand";
                         imgBody.setImageResource(R.drawable.body_b_1);
+                        testLocalstring = testLocalstring + localBody;
                     }
-                    if (-118 + khongTrong < iX && iX < -41 + khongTrong && -1138 + khongTrong < iY && iY < -398 + khongTrong) {
+                    if (-118 < touchX && touchX < -41 && -1138 < touchY && touchY < -398) {
                         Log.i(">local<:", "2");
                         localBody = "Left Hand";
                         imgBody.setImageResource(R.drawable.body_b_2);
+                        testLocalstring = testLocalstring + localBody;
                     }
-                    if (-299 + khongTrong < iX && iX < -114 + khongTrong && -1127 + khongTrong < iY && iY < -562 + khongTrong) {
+                    if (-299 < touchX && touchX < -114 && -1127 < touchY && touchY < -562) {
                         Log.i(">local<:", "3");
                         localBody = "Body";
                         imgBody.setImageResource(R.drawable.body_b_3);
+                        testLocalstring = testLocalstring + localBody;
                     }
-                    if (-299 + khongTrong < iX && iX < -206 + khongTrong && -498 + khongTrong < iY && iY < 411 + khongTrong) {
+                    if (-299 < touchX && touchX < -206 && -498 < touchY && touchY < 411) {
                         Log.i(">local<:", "4");
                         localBody = "Right Foot";
                         imgBody.setImageResource(R.drawable.body_b_4);
+                        testLocalstring = testLocalstring + localBody;
                     }
-                    if (-216 + khongTrong < iX && iX < -114 + khongTrong && -506 + khongTrong < iY && iY < 419 + khongTrong) {
+                    if (-216 < touchX && touchX < -114 && -506 < touchY && touchY < 419) {
                         Log.i(">local<:", "5");
                         localBody = "Left Foot";
                         imgBody.setImageResource(R.drawable.body_b_5);
+                        testLocalstring = testLocalstring + localBody;
                     }
-                    if (-245 + khongTrong < iX && iX < -158 + khongTrong && -1388 + khongTrong < iY && iY < -1209 + khongTrong) {
+                    if (-245 < touchX && touchX < -158 && -1388 < touchY && touchY < -1209) {
                         Log.i(">local<:", "6");
                         localBody = "Head";
                         imgBody.setImageResource(R.drawable.body_b_6);
+                        testLocalstring = testLocalstring + localBody;
                     }
                 }
+
+                testLocal.setText("X:" + String.valueOf(pX) + " Y:" + String.valueOf(pY) + " " + testLocalstring);
 
 
                 if (bodyFace == 1) {

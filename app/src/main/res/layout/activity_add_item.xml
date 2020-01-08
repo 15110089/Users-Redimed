@@ -25,6 +25,7 @@
 <!--        android:textColorHint="#7C7878" />-->
 
     <TextView
+        android:id="@+id/testLocal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Touch your region position on the picture"

@@ -12,6 +12,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -41,7 +42,17 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -475,6 +486,17 @@ public class Review extends AppCompatActivity {
                                 public void onSuccess(Uri uri) {
                                     // Got the download URL for 'users/me/profile.png'
                                     myRef.child("Patient").child(key).child("Request").child(strKeyRequest).child("LinkImage1").setValue(uri.toString());
+                                    //https://serverredimed20200103113642.azurewebsites.net/v1/test2/0326055411/1/https%3A**n****n**encrypted-tbn0.gstatic.com**n**images%3Fq%3Dtbn%3AANd9GcSlSjQxZe_tte_QOFNFfCIyn0jf6s3PIl2pzJuTedovz70SOz5S%26s
+                                    String path = "https://serverredimed20200103113642.azurewebsites.net/v1/test2/"+key+"/"+strKeyRequest+"/";
+                                    String path2 = uri.toString();
+                                    try {
+                                        path2 = path2.replace("/", "**n**");
+                                        path2 = path2.replace("%2F", "**nn**");
+                                        String encodedURL = URLEncoder.encode(path2, "UTF-8");
+                                        new Review.ReadJSONObject().execute(path + encodedURL);
+                                    } catch (UnsupportedEncodingException   e) {
+                                        e.printStackTrace();
+                                    }
                                     progress.dismiss();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
@@ -780,6 +802,42 @@ public class Review extends AppCompatActivity {
         byte [] b=baos.toByteArray();
         String temp=Base64.encodeToString(b, Base64.DEFAULT);
         return temp;
+    }
+
+    private class ReadJSONObject extends AsyncTask<String, Void,String> {
+        @Override
+        protected String doInBackground(String... strings) {
+            StringBuffer content = new StringBuffer();
+            try {
+                URL url = new URL(strings[0]);
+                InputStreamReader inputStreamReader = new InputStreamReader(url.openConnection().getInputStream());
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String line = "";
+
+                while ((line = bufferedReader.readLine()) != null) {
+                    content.append(line);
+                }
+                bufferedReader.close();
+
+            } catch (MalformedURLException e) {
+                Log.d(">>>>>>>>>>", "Ko on roi 1");
+                e.printStackTrace();
+            } catch (IOException e) {
+                Log.d(">>>>>>>>>>", "Ko on roi 2");
+                e.printStackTrace();
+            }
+            return content.toString();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            try {
+                JSONObject object = new JSONObject(s);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
