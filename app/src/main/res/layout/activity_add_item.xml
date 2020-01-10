@@ -61,15 +61,15 @@
     <Button
         android:id="@+id/btChange"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="28dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/shapebutton"
-        android:padding="15dp"
+        android:background="@drawable/shapebuttonta"
+        android:drawableTop="@drawable/turnedaround"
+        android:rotation="180"
         android:shadowColor="@android:color/transparent"
-        android:text="turn around"
         android:textColor="#FFFFFF" />
 
     <Button
