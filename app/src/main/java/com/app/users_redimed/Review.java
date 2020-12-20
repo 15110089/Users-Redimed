@@ -380,7 +380,7 @@ public class Review extends AppCompatActivity {
                                     // Got the download URL for 'users/me/profile.png'
                                     myRef.child("Patient").child(key).child("Request").child(strKeyRequest).child("LinkImage1").setValue(uri.toString());
                                     //https://serverredimed20200103113642.azurewebsites.net/v1/test2/0326055411/1/https%3A**n****n**encrypted-tbn0.gstatic.com**n**images%3Fq%3Dtbn%3AANd9GcSlSjQxZe_tte_QOFNFfCIyn0jf6s3PIl2pzJuTedovz70SOz5S%26s
-                                    String path = "https://serverredimed20201012064701.azurewebsites.net/v1/test2/"+key+"/"+strKeyRequest+"/";
+                                    String path = "https://serverredimed20201220013926.azurewebsites.net//v1/test2/"+key+"/"+strKeyRequest+"/";
                                     String path2 = uri.toString();
                                     try {
                                         path2 = path2.replace("/", "**n**");
